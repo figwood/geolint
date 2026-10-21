@@ -21,7 +21,10 @@ test('local preview bounds rows, automatically shows geometry, resets on replace
     const input = { type: 'FeatureCollection', crs: { type: 'name', properties: { name: 'EPSG:3857' } }, features: Array.from({ length: 1500 }, (_, i) => ({
       type: 'Feature', geometry: { type: 'Point', coordinates: [i, i] }, properties: { name: '<script>alert(1)</script>' },
     })) };
-    await page.locator('#file-drop-zone').dispatchEvent('dragover', { dataTransfer: { files: [] } });
+    await page.evaluate(() => {
+      const transfer = new DataTransfer();
+      document.getElementById('file-drop-zone').dispatchEvent(new DragEvent('dragover', { bubbles: true, cancelable: true, dataTransfer: transfer }));
+    });
     assert.equal(await page.locator('#file-drop-zone').getAttribute('data-dragging'), 'true');
     await page.evaluate(input => {
       const file = new File([JSON.stringify(input)], 'preview.geojson', { type: 'application/json' });

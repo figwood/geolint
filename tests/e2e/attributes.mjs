@@ -18,9 +18,9 @@ test('attribute checks are absent from the UI and disabled in reports while prev
     await page.waitForFunction(() => document.getElementById('preview-rows').textContent.includes('preview value'));
     await page.locator('#file-next').click();
     for (const checkbox of await page.locator('[data-topology-rule]').all()) await checkbox.check();
-    assert.equal(await page.locator('[data-topology-rule]:checked').count(), 6);
+    assert.equal(await page.locator('[data-topology-rule]:checked').count(), 23);
     await page.locator('#rules-next').click();
-    assert.equal(await page.locator('#selected-rules li').count(), 17);
+    assert.equal(await page.locator('#selected-rules li').count(), 34);
     assert.doesNotMatch(await page.locator('#selected-rules').textContent(), /Rule-0(?:18|19|2[0-3])/);
     await page.locator('#recheck').click();
     await page.waitForFunction(() => document.getElementById('status').textContent === 'Inspection completed.');

@@ -150,7 +150,6 @@ function display(message) {
   }
   completed = message.result;
   results = unifiedResults(completed);
-  get('status').textContent = 'Inspection completed.';
   const verdict = resultVerdict(results.summary, completed.attributeSummary, completed.topology);
   get('result-verdict').className = `result-verdict verdict-${verdict.tone}`;
   get('verdict-title').textContent = verdict.title;
@@ -180,6 +179,7 @@ function display(message) {
   get('csv').disabled = false;
   renderPage();
   wizard.finish(true);
+  get('status').textContent = 'Inspection completed.';
 }
 function selectFile(file) {
   generation++;
