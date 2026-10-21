@@ -57,6 +57,8 @@ SITE_URL=https://example.com/geolint/ npm run release
 
 Use `SITE_URL= npm run release` to omit absolute SEO URLs and the sitemap. `npm run build` remains a development preview build and does not produce a verified release. Cloudflare configuration is optional; any static host that serves the required modules, Worker, and WASM assets can host the build.
 
+The current Cloudflare Workers deployment uses the `assets.directory = "./dist"` setting in `wrangler.toml`. Configure Cloudflare Builds with `npm run build` as the build command and `npm run deploy` as the deploy command. The deploy script runs the build first, so `dist/` exists before Wrangler validates the assets directory.
+
 ## Contributing
 
 Issues and pull requests are welcome. Include selected rules, parameters, browser/OS versions, expected and actual results, and a minimal synthetic example. Keep private geometry and unredacted reports out of public issues.

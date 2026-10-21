@@ -15,6 +15,8 @@
     "typecheck": "tsc --noEmit",
     "build:core": "tsc -p tsconfig.build.json",
     "build": "npm run build:core && node scripts/package-site.mjs",
+    "deploy": "npx wrangler deploy",
+    "predeploy": "npm run build",
     "dev": "npm run build && python3 -m http.server 5173 --bind 127.0.0.1 --directory dist",
     "baseline": "python3 scripts/native-baseline/generate.py",
     "setup:geos": "python3 scripts/setup-geos.py",
