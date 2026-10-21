@@ -4,6 +4,8 @@ GeoLint checks 2D GeoJSON and Shapefile geometry in your browser. File reading, 
 
 [Try GeoLint](https://geolint.app/) · [Help](https://geolint.app/help.html) · [Rules](https://geolint.app/rules.html) · [Report an issue](https://github.com/figwood/geolint/issues)
 
+The current online version at [geolint.app](https://geolint.app/) is deployed on Cloudflare.
+
 GeoLint is a development preview. A passing inspection covers the selected rules; it does not establish that a dataset meets every GIS or business requirement.
 
 ## Features
