@@ -106,6 +106,7 @@ test(`complete UI, pagination, recovery and privacy (${selected})`, {timeout:600
     assert.equal(await page.locator('#csv').isDisabled(),true);
     await input(valid);
     for (const name of ['json','csv']) {
+      await page.locator('#download').click();
       const [download] = await Promise.all([page.waitForEvent('download'),page.locator('#'+name).click()]);
       assert.equal(download.suggestedFilename(), 'fixture_check_result.'+name);
       assert.equal(await download.failure(), null);

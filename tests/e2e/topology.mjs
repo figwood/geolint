@@ -70,7 +70,7 @@ test('single-layer gap remains visible and exportable without source participant
     const geometry={type:'Polygon',coordinates:[[[0,0],[4,0],[4,4],[0,4],[0,0]],[[1,1],[2,1],[2,2],[1,2],[1,1]]]};
     await page.locator('#file').setInputFiles({name:'gap.geojson',mimeType:'application/json',buffer:Buffer.from(JSON.stringify(geometry))});
     await page.locator('#file-next').click();await page.locator('#topology-gaps').check();
-    assert.equal(await page.locator('[data-topology-rule]').count(),6);
+    assert.equal(await page.locator('[data-topology-rule]').count(),23);
     await page.locator('[data-step="review"]').click();assert.match(await page.locator('#selected-rules').textContent(),/Rule-017/);
     await page.locator('#recheck').click();await page.waitForFunction(()=>document.getElementById('status').textContent==='Inspection completed.');
     assert.equal(await page.locator('#stats [data-filter=invalid] strong').textContent(),'1');

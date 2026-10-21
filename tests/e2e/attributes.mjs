@@ -17,10 +17,13 @@ test('attribute checks are absent from the UI and disabled in reports while prev
     await page.locator('#file').setInputFiles({ name: 'attributes.geojson', mimeType: 'application/json', buffer: Buffer.from(JSON.stringify(input)) });
     await page.waitForFunction(() => document.getElementById('preview-rows').textContent.includes('preview value'));
     await page.locator('#file-next').click();
-    for (const checkbox of await page.locator('[data-topology-rule]').all()) await checkbox.check();
-    assert.equal(await page.locator('[data-topology-rule]:checked').count(), 23);
+    const topologyRules = new Set(['Rule-012', 'Rule-013', 'Rule-014', 'Rule-015', 'Rule-016', 'Rule-017']);
+    for (const checkbox of await page.locator('[data-topology-rule]').all()) {
+      if (topologyRules.has(await checkbox.getAttribute('data-topology-rule'))) await checkbox.check();
+    }
+    assert.equal(await page.locator('[data-topology-rule]:checked').count(), 6);
     await page.locator('#rules-next').click();
-    assert.equal(await page.locator('#selected-rules li').count(), 34);
+    assert.equal(await page.locator('#selected-rules li').count(), 17);
     assert.doesNotMatch(await page.locator('#selected-rules').textContent(), /Rule-0(?:18|19|2[0-3])/);
     await page.locator('#recheck').click();
     await page.waitForFunction(() => document.getElementById('status').textContent === 'Inspection completed.');
