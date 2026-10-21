@@ -24,6 +24,9 @@ jobs:
         with:
           python-version: '3.12'
       - run: npm ci
+      - name: Select production Wrangler config
+        if: github.ref == 'refs/heads/main'
+        run: cp wrangler_prd.toml wrangler.toml
       - run: npm test
       - run: npm run typecheck
       - run: npm run build
