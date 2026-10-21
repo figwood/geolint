@@ -1,0 +1,58 @@
+{
+  "kind": "geolint-attribute-rules",
+  "schemaVersion": "1.0",
+  "rules": [
+    {
+      "id": "bad-0",
+      "field": "value-0",
+      "enabled": true,
+      "required": true,
+      "allowNull": false,
+      "allowEmpty": false,
+      "type": "unsupported",
+      "constraints": {
+        "minimum": 0,
+        "maximum": 10
+      }
+    },
+    {
+      "id": "bad-1",
+      "field": "value-1",
+      "enabled": true,
+      "required": true,
+      "allowNull": false,
+      "allowEmpty": false,
+      "type": "unsupported",
+      "constraints": {
+        "minimum": 0,
+        "maximum": 10
+      }
+    },
+    {
+      "id": "bad-2",
+      "field": "value-2",
+      "enabled": true,
+      "required": true,
+      "allowNull": false,
+      "allowEmpty": false,
+      "type": "unsupported",
+      "constraints": {
+        "minimum": 0,
+        "maximum": 10
+      }
+    },
+    {
+      "id": "bad-3",
+      "field": "value-3",
+      "enabled": true,
+      "required": true,
+      "allowNull": false,
+      "allowEmpty": false,
+      "type": "unsupported",
+      "constraints": {
+        "minimum": 0,
+        "maximum": 10
+      }
+    }
+  ]
+}

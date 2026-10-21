@@ -1,0 +1,11 @@
+# Top-level Worker settings are used for production deployments.
+# Preview deployments are named after the current Git branch by Wrangler.
+main = "./worker.js"
+
+[previews.vars]
+GEOLINT_ENV = "develop"
+
+[assets]
+directory = "./dist"
+binding = "ASSETS"
+run_worker_first = ["/", "/*.html"]

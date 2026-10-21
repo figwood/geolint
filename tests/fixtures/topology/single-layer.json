@@ -1,0 +1,2326 @@
+{
+  "geosVersion": "3.13.0",
+  "sourceReference": {
+    "branch": "release-3_44",
+    "path": "src/plugins/topology/topolTest.cpp",
+    "retrievedAt": "2026-10-12",
+    "commit": null,
+    "limitation": "GitHub commit endpoint unavailable; branch reference is not an immutable source pin."
+  },
+  "cases": [
+    {
+      "name": "validity",
+      "geometries": [
+        {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                2,
+                0
+              ],
+              [
+                2,
+                2
+              ],
+              [
+                0,
+                2
+              ],
+              [
+                0,
+                0
+              ]
+            ]
+          ]
+        },
+        {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                2,
+                2
+              ],
+              [
+                0,
+                2
+              ],
+              [
+                2,
+                0
+              ],
+              [
+                0,
+                0
+              ]
+            ]
+          ]
+        },
+        {
+          "type": "LineString",
+          "coordinates": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              0
+            ]
+          ]
+        }
+      ],
+      "expected": {
+        "invalid": [
+          1
+        ],
+        "rules": []
+      }
+    },
+    {
+      "name": "duplicate-points",
+      "geometries": [
+        {
+          "type": "Point",
+          "coordinates": [
+            0,
+            0
+          ]
+        },
+        {
+          "type": "Point",
+          "coordinates": [
+            0,
+            0
+          ]
+        },
+        {
+          "type": "Point",
+          "coordinates": [
+            0,
+            0
+          ]
+        }
+      ],
+      "expected": {
+        "invalid": [],
+        "rules": [
+          {
+            "id": "Rule-012",
+            "participants": 3,
+            "coverage": "complete",
+            "checks": 3,
+            "candidates": 3,
+            "issues": [
+              {
+                "participants": [
+                  0,
+                  1
+                ],
+                "location": null
+              },
+              {
+                "participants": [
+                  0,
+                  2
+                ],
+                "location": null
+              },
+              {
+                "participants": [
+                  1,
+                  2
+                ],
+                "location": null
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "multipart-actual-count",
+      "geometries": [
+        {
+          "type": "MultiPoint",
+          "coordinates": [
+            [
+              0,
+              0
+            ]
+          ]
+        },
+        {
+          "type": "MultiPoint",
+          "coordinates": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              1
+            ]
+          ]
+        }
+      ],
+      "expected": {
+        "invalid": [],
+        "rules": [
+          {
+            "id": "Rule-013",
+            "participants": 2,
+            "coverage": "complete",
+            "checks": 2,
+            "candidates": 0,
+            "issues": [
+              {
+                "participants": [
+                  1
+                ],
+                "location": null
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "invalid-multipart",
+      "geometries": [
+        {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  0,
+                  0
+                ],
+                [
+                  2,
+                  2
+                ],
+                [
+                  0,
+                  2
+                ],
+                [
+                  2,
+                  0
+                ],
+                [
+                  0,
+                  0
+                ]
+              ]
+            ],
+            [
+              [
+                [
+                  0,
+                  0
+                ],
+                [
+                  2,
+                  2
+                ],
+                [
+                  0,
+                  2
+                ],
+                [
+                  2,
+                  0
+                ],
+                [
+                  0,
+                  0
+                ]
+              ]
+            ]
+          ]
+        }
+      ],
+      "expected": {
+        "invalid": [
+          0
+        ],
+        "rules": [
+          {
+            "id": "Rule-013",
+            "participants": 1,
+            "coverage": "complete",
+            "checks": 1,
+            "candidates": 0,
+            "issues": [
+              {
+                "participants": [
+                  0
+                ],
+                "location": null
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "multipart-line-and-area",
+      "geometries": [
+        {
+          "type": "MultiLineString",
+          "coordinates": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                1,
+                0
+              ]
+            ],
+            [
+              [
+                2,
+                0
+              ],
+              [
+                3,
+                0
+              ]
+            ]
+          ]
+        },
+        {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  0,
+                  0
+                ],
+                [
+                  2,
+                  0
+                ],
+                [
+                  2,
+                  2
+                ],
+                [
+                  0,
+                  2
+                ],
+                [
+                  0,
+                  0
+                ]
+              ]
+            ],
+            [
+              [
+                [
+                  5,
+                  0
+                ],
+                [
+                  7,
+                  0
+                ],
+                [
+                  7,
+                  2
+                ],
+                [
+                  5,
+                  2
+                ],
+                [
+                  5,
+                  0
+                ]
+              ]
+            ]
+          ]
+        }
+      ],
+      "expected": {
+        "invalid": [],
+        "rules": [
+          {
+            "id": "Rule-013",
+            "participants": 2,
+            "coverage": "complete",
+            "checks": 2,
+            "candidates": 0,
+            "issues": [
+              {
+                "participants": [
+                  0
+                ],
+                "location": null
+              },
+              {
+                "participants": [
+                  1
+                ],
+                "location": null
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "isolated-line",
+      "geometries": [
+        {
+          "type": "LineString",
+          "coordinates": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              0
+            ]
+          ]
+        }
+      ],
+      "expected": {
+        "invalid": [],
+        "rules": [
+          {
+            "id": "Rule-014",
+            "participants": 1,
+            "coverage": "complete",
+            "checks": 2,
+            "candidates": 0,
+            "issues": [
+              {
+                "participants": [
+                  0
+                ],
+                "location": {
+                  "x": 0,
+                  "y": 0
+                }
+              },
+              {
+                "participants": [
+                  0
+                ],
+                "location": {
+                  "x": 1,
+                  "y": 0
+                }
+              }
+            ]
+          },
+          {
+            "id": "Rule-015",
+            "participants": 1,
+            "coverage": "complete",
+            "checks": 2,
+            "candidates": 0,
+            "issues": []
+          }
+        ]
+      }
+    },
+    {
+      "name": "joined-lines",
+      "geometries": [
+        {
+          "type": "LineString",
+          "coordinates": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              0
+            ]
+          ]
+        },
+        {
+          "type": "LineString",
+          "coordinates": [
+            [
+              1,
+              0
+            ],
+            [
+              2,
+              0
+            ]
+          ]
+        }
+      ],
+      "expected": {
+        "invalid": [],
+        "rules": [
+          {
+            "id": "Rule-014",
+            "participants": 2,
+            "coverage": "complete",
+            "checks": 3,
+            "candidates": 0,
+            "issues": [
+              {
+                "participants": [
+                  0
+                ],
+                "location": {
+                  "x": 0,
+                  "y": 0
+                }
+              },
+              {
+                "participants": [
+                  1
+                ],
+                "location": {
+                  "x": 2,
+                  "y": 0
+                }
+              }
+            ]
+          },
+          {
+            "id": "Rule-015",
+            "participants": 2,
+            "coverage": "complete",
+            "checks": 3,
+            "candidates": 0,
+            "issues": [
+              {
+                "participants": [
+                  0,
+                  1
+                ],
+                "location": {
+                  "x": 1,
+                  "y": 0
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "closed-line",
+      "geometries": [
+        {
+          "type": "LineString",
+          "coordinates": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ]
+        }
+      ],
+      "expected": {
+        "invalid": [],
+        "rules": [
+          {
+            "id": "Rule-014",
+            "participants": 1,
+            "coverage": "complete",
+            "checks": 1,
+            "candidates": 0,
+            "issues": []
+          },
+          {
+            "id": "Rule-015",
+            "participants": 1,
+            "coverage": "complete",
+            "checks": 1,
+            "candidates": 0,
+            "issues": [
+              {
+                "participants": [
+                  0
+                ],
+                "location": {
+                  "x": 0,
+                  "y": 0
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "multipart-internal-connection",
+      "geometries": [
+        {
+          "type": "MultiLineString",
+          "coordinates": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                1,
+                0
+              ]
+            ],
+            [
+              [
+                1,
+                0
+              ],
+              [
+                2,
+                0
+              ]
+            ]
+          ]
+        }
+      ],
+      "expected": {
+        "invalid": [],
+        "rules": [
+          {
+            "id": "Rule-014",
+            "participants": 1,
+            "coverage": "complete",
+            "checks": 3,
+            "candidates": 0,
+            "issues": [
+              {
+                "participants": [
+                  0
+                ],
+                "location": {
+                  "x": 0,
+                  "y": 0
+                }
+              },
+              {
+                "participants": [
+                  0
+                ],
+                "location": {
+                  "x": 2,
+                  "y": 0
+                }
+              }
+            ]
+          },
+          {
+            "id": "Rule-015",
+            "participants": 1,
+            "coverage": "complete",
+            "checks": 3,
+            "candidates": 0,
+            "issues": [
+              {
+                "participants": [
+                  0
+                ],
+                "location": {
+                  "x": 1,
+                  "y": 0
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "three-way-junction",
+      "geometries": [
+        {
+          "type": "LineString",
+          "coordinates": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              0
+            ]
+          ]
+        },
+        {
+          "type": "LineString",
+          "coordinates": [
+            [
+              1,
+              0
+            ],
+            [
+              2,
+              0
+            ]
+          ]
+        },
+        {
+          "type": "LineString",
+          "coordinates": [
+            [
+              1,
+              0
+            ],
+            [
+              1,
+              1
+            ]
+          ]
+        }
+      ],
+      "expected": {
+        "invalid": [],
+        "rules": [
+          {
+            "id": "Rule-014",
+            "participants": 3,
+            "coverage": "complete",
+            "checks": 4,
+            "candidates": 0,
+            "issues": [
+              {
+                "participants": [
+                  0
+                ],
+                "location": {
+                  "x": 0,
+                  "y": 0
+                }
+              },
+              {
+                "participants": [
+                  2
+                ],
+                "location": {
+                  "x": 1,
+                  "y": 1
+                }
+              },
+              {
+                "participants": [
+                  1
+                ],
+                "location": {
+                  "x": 2,
+                  "y": 0
+                }
+              }
+            ]
+          },
+          {
+            "id": "Rule-015",
+            "participants": 3,
+            "coverage": "complete",
+            "checks": 4,
+            "candidates": 0,
+            "issues": []
+          }
+        ]
+      }
+    },
+    {
+      "name": "interior-touch",
+      "geometries": [
+        {
+          "type": "LineString",
+          "coordinates": [
+            [
+              0,
+              0
+            ],
+            [
+              2,
+              0
+            ]
+          ]
+        },
+        {
+          "type": "LineString",
+          "coordinates": [
+            [
+              1,
+              0
+            ],
+            [
+              1,
+              1
+            ]
+          ]
+        }
+      ],
+      "expected": {
+        "invalid": [],
+        "rules": [
+          {
+            "id": "Rule-014",
+            "participants": 2,
+            "coverage": "complete",
+            "checks": 4,
+            "candidates": 0,
+            "issues": [
+              {
+                "participants": [
+                  0
+                ],
+                "location": {
+                  "x": 0,
+                  "y": 0
+                }
+              },
+              {
+                "participants": [
+                  1
+                ],
+                "location": {
+                  "x": 1,
+                  "y": 0
+                }
+              },
+              {
+                "participants": [
+                  1
+                ],
+                "location": {
+                  "x": 1,
+                  "y": 1
+                }
+              },
+              {
+                "participants": [
+                  0
+                ],
+                "location": {
+                  "x": 2,
+                  "y": 0
+                }
+              }
+            ]
+          },
+          {
+            "id": "Rule-015",
+            "participants": 2,
+            "coverage": "complete",
+            "checks": 4,
+            "candidates": 0,
+            "issues": []
+          }
+        ]
+      }
+    },
+    {
+      "name": "two-shared-endpoints",
+      "geometries": [
+        {
+          "type": "LineString",
+          "coordinates": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              0
+            ]
+          ]
+        },
+        {
+          "type": "LineString",
+          "coordinates": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              0
+            ]
+          ]
+        }
+      ],
+      "expected": {
+        "invalid": [],
+        "rules": [
+          {
+            "id": "Rule-014",
+            "participants": 2,
+            "coverage": "complete",
+            "checks": 2,
+            "candidates": 0,
+            "issues": []
+          },
+          {
+            "id": "Rule-015",
+            "participants": 2,
+            "coverage": "complete",
+            "checks": 2,
+            "candidates": 0,
+            "issues": [
+              {
+                "participants": [
+                  0,
+                  1
+                ],
+                "location": {
+                  "x": 0,
+                  "y": 0
+                }
+              },
+              {
+                "participants": [
+                  0,
+                  1
+                ],
+                "location": {
+                  "x": 1,
+                  "y": 0
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "invalid-line-exclusion",
+      "geometries": [
+        {
+          "type": "LineString",
+          "coordinates": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ]
+        },
+        {
+          "type": "LineString",
+          "coordinates": [
+            [
+              2,
+              0
+            ],
+            [
+              3,
+              0
+            ]
+          ]
+        },
+        null
+      ],
+      "expected": {
+        "invalid": [
+          0
+        ],
+        "rules": [
+          {
+            "id": "Rule-014",
+            "participants": 1,
+            "coverage": "partial",
+            "checks": 2,
+            "candidates": 0,
+            "issues": [
+              {
+                "participants": [
+                  1
+                ],
+                "location": {
+                  "x": 2,
+                  "y": 0
+                }
+              },
+              {
+                "participants": [
+                  1
+                ],
+                "location": {
+                  "x": 3,
+                  "y": 0
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "overlap-partial",
+      "geometries": [
+        {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                2,
+                0
+              ],
+              [
+                2,
+                2
+              ],
+              [
+                0,
+                2
+              ],
+              [
+                0,
+                0
+              ]
+            ]
+          ]
+        },
+        {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                1,
+                0
+              ],
+              [
+                3,
+                0
+              ],
+              [
+                3,
+                2
+              ],
+              [
+                1,
+                2
+              ],
+              [
+                1,
+                0
+              ]
+            ]
+          ]
+        }
+      ],
+      "expected": {
+        "invalid": [],
+        "rules": [
+          {
+            "id": "Rule-016",
+            "participants": 2,
+            "coverage": "complete",
+            "checks": 1,
+            "candidates": 1,
+            "issues": [
+              {
+                "participants": [
+                  0,
+                  1
+                ],
+                "location": null
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "overlap-equal",
+      "geometries": [
+        {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                2,
+                0
+              ],
+              [
+                2,
+                2
+              ],
+              [
+                0,
+                2
+              ],
+              [
+                0,
+                0
+              ]
+            ]
+          ]
+        },
+        {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                2,
+                0
+              ],
+              [
+                2,
+                2
+              ],
+              [
+                0,
+                2
+              ],
+              [
+                0,
+                0
+              ]
+            ]
+          ]
+        }
+      ],
+      "expected": {
+        "invalid": [],
+        "rules": [
+          {
+            "id": "Rule-016",
+            "participants": 2,
+            "coverage": "complete",
+            "checks": 1,
+            "candidates": 1,
+            "issues": []
+          }
+        ]
+      }
+    },
+    {
+      "name": "overlap-contained",
+      "geometries": [
+        {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                2,
+                0
+              ],
+              [
+                2,
+                2
+              ],
+              [
+                0,
+                2
+              ],
+              [
+                0,
+                0
+              ]
+            ]
+          ]
+        },
+        {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                0.5,
+                0.5
+              ],
+              [
+                1.0,
+                0.5
+              ],
+              [
+                1.0,
+                1.0
+              ],
+              [
+                0.5,
+                1.0
+              ],
+              [
+                0.5,
+                0.5
+              ]
+            ]
+          ]
+        }
+      ],
+      "expected": {
+        "invalid": [],
+        "rules": [
+          {
+            "id": "Rule-016",
+            "participants": 2,
+            "coverage": "complete",
+            "checks": 1,
+            "candidates": 1,
+            "issues": []
+          }
+        ]
+      }
+    },
+    {
+      "name": "overlap-touch",
+      "geometries": [
+        {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                2,
+                0
+              ],
+              [
+                2,
+                2
+              ],
+              [
+                0,
+                2
+              ],
+              [
+                0,
+                0
+              ]
+            ]
+          ]
+        },
+        {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                2,
+                0
+              ],
+              [
+                4,
+                0
+              ],
+              [
+                4,
+                2
+              ],
+              [
+                2,
+                2
+              ],
+              [
+                2,
+                0
+              ]
+            ]
+          ]
+        }
+      ],
+      "expected": {
+        "invalid": [],
+        "rules": [
+          {
+            "id": "Rule-016",
+            "participants": 2,
+            "coverage": "complete",
+            "checks": 1,
+            "candidates": 1,
+            "issues": []
+          }
+        ]
+      }
+    },
+    {
+      "name": "disjoint-polygons",
+      "geometries": [
+        {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                2,
+                0
+              ],
+              [
+                2,
+                2
+              ],
+              [
+                0,
+                2
+              ],
+              [
+                0,
+                0
+              ]
+            ]
+          ]
+        },
+        {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                10,
+                0
+              ],
+              [
+                12,
+                0
+              ],
+              [
+                12,
+                2
+              ],
+              [
+                10,
+                2
+              ],
+              [
+                10,
+                0
+              ]
+            ]
+          ]
+        }
+      ],
+      "expected": {
+        "invalid": [],
+        "rules": [
+          {
+            "id": "Rule-016",
+            "participants": 2,
+            "coverage": "complete",
+            "checks": 0,
+            "candidates": 0,
+            "issues": []
+          },
+          {
+            "id": "Rule-017",
+            "participants": 2,
+            "coverage": "complete",
+            "checks": 1,
+            "candidates": 0,
+            "issues": []
+          }
+        ]
+      }
+    },
+    {
+      "name": "two-holes-one-record",
+      "geometries": [
+        {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                6,
+                0
+              ],
+              [
+                6,
+                6
+              ],
+              [
+                0,
+                6
+              ],
+              [
+                0,
+                0
+              ]
+            ],
+            [
+              [
+                1,
+                1
+              ],
+              [
+                2,
+                1
+              ],
+              [
+                2,
+                2
+              ],
+              [
+                1,
+                2
+              ],
+              [
+                1,
+                1
+              ]
+            ],
+            [
+              [
+                3,
+                3
+              ],
+              [
+                4,
+                3
+              ],
+              [
+                4,
+                4
+              ],
+              [
+                3,
+                4
+              ],
+              [
+                3,
+                3
+              ]
+            ]
+          ]
+        }
+      ],
+      "expected": {
+        "invalid": [],
+        "rules": [
+          {
+            "id": "Rule-017",
+            "participants": 1,
+            "coverage": "complete",
+            "checks": 1,
+            "candidates": 0,
+            "issues": [
+              {
+                "participants": [],
+                "location": {
+                  "x": 1,
+                  "y": 1
+                },
+                "geometry": {
+                  "type": "Polygon",
+                  "coordinates": [
+                    [
+                      [
+                        1,
+                        1
+                      ],
+                      [
+                        2,
+                        1
+                      ],
+                      [
+                        2,
+                        2
+                      ],
+                      [
+                        1,
+                        2
+                      ],
+                      [
+                        1,
+                        1
+                      ]
+                    ]
+                  ]
+                }
+              },
+              {
+                "participants": [],
+                "location": {
+                  "x": 3,
+                  "y": 3
+                },
+                "geometry": {
+                  "type": "Polygon",
+                  "coordinates": [
+                    [
+                      [
+                        3,
+                        3
+                      ],
+                      [
+                        4,
+                        3
+                      ],
+                      [
+                        4,
+                        4
+                      ],
+                      [
+                        3,
+                        4
+                      ],
+                      [
+                        3,
+                        3
+                      ]
+                    ]
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "filled-holes",
+      "geometries": [
+        {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                6,
+                0
+              ],
+              [
+                6,
+                6
+              ],
+              [
+                0,
+                6
+              ],
+              [
+                0,
+                0
+              ]
+            ],
+            [
+              [
+                1,
+                1
+              ],
+              [
+                2,
+                1
+              ],
+              [
+                2,
+                2
+              ],
+              [
+                1,
+                2
+              ],
+              [
+                1,
+                1
+              ]
+            ],
+            [
+              [
+                3,
+                3
+              ],
+              [
+                4,
+                3
+              ],
+              [
+                4,
+                4
+              ],
+              [
+                3,
+                4
+              ],
+              [
+                3,
+                3
+              ]
+            ]
+          ]
+        },
+        {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                1,
+                1
+              ],
+              [
+                2,
+                1
+              ],
+              [
+                2,
+                2
+              ],
+              [
+                1,
+                2
+              ],
+              [
+                1,
+                1
+              ]
+            ]
+          ]
+        },
+        {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                3,
+                3
+              ],
+              [
+                4,
+                3
+              ],
+              [
+                4,
+                4
+              ],
+              [
+                3,
+                4
+              ],
+              [
+                3,
+                3
+              ]
+            ]
+          ]
+        }
+      ],
+      "expected": {
+        "invalid": [],
+        "rules": [
+          {
+            "id": "Rule-017",
+            "participants": 3,
+            "coverage": "complete",
+            "checks": 1,
+            "candidates": 0,
+            "issues": []
+          }
+        ]
+      }
+    },
+    {
+      "name": "enclosed-coverage-gap",
+      "geometries": [
+        {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                4,
+                0
+              ],
+              [
+                4,
+                1
+              ],
+              [
+                0,
+                1
+              ],
+              [
+                0,
+                0
+              ]
+            ]
+          ]
+        },
+        {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                0,
+                3
+              ],
+              [
+                4,
+                3
+              ],
+              [
+                4,
+                4
+              ],
+              [
+                0,
+                4
+              ],
+              [
+                0,
+                3
+              ]
+            ]
+          ]
+        },
+        {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                0,
+                1
+              ],
+              [
+                1,
+                1
+              ],
+              [
+                1,
+                3
+              ],
+              [
+                0,
+                3
+              ],
+              [
+                0,
+                1
+              ]
+            ]
+          ]
+        },
+        {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                3,
+                1
+              ],
+              [
+                4,
+                1
+              ],
+              [
+                4,
+                3
+              ],
+              [
+                3,
+                3
+              ],
+              [
+                3,
+                1
+              ]
+            ]
+          ]
+        }
+      ],
+      "expected": {
+        "invalid": [],
+        "rules": [
+          {
+            "id": "Rule-017",
+            "participants": 4,
+            "coverage": "complete",
+            "checks": 1,
+            "candidates": 0,
+            "issues": [
+              {
+                "participants": [],
+                "location": {
+                  "x": 1,
+                  "y": 1
+                },
+                "geometry": {
+                  "type": "Polygon",
+                  "coordinates": [
+                    [
+                      [
+                        1,
+                        1
+                      ],
+                      [
+                        3,
+                        1
+                      ],
+                      [
+                        3,
+                        3
+                      ],
+                      [
+                        1,
+                        3
+                      ],
+                      [
+                        1,
+                        1
+                      ]
+                    ]
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "open-coverage-channel",
+      "geometries": [
+        {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                0,
+                3
+              ],
+              [
+                4,
+                3
+              ],
+              [
+                4,
+                4
+              ],
+              [
+                0,
+                4
+              ],
+              [
+                0,
+                3
+              ]
+            ]
+          ]
+        },
+        {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                0,
+                1
+              ],
+              [
+                1,
+                1
+              ],
+              [
+                1,
+                3
+              ],
+              [
+                0,
+                3
+              ],
+              [
+                0,
+                1
+              ]
+            ]
+          ]
+        },
+        {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                3,
+                1
+              ],
+              [
+                4,
+                1
+              ],
+              [
+                4,
+                3
+              ],
+              [
+                3,
+                3
+              ],
+              [
+                3,
+                1
+              ]
+            ]
+          ]
+        }
+      ],
+      "expected": {
+        "invalid": [],
+        "rules": [
+          {
+            "id": "Rule-017",
+            "participants": 3,
+            "coverage": "complete",
+            "checks": 1,
+            "candidates": 0,
+            "issues": []
+          }
+        ]
+      }
+    },
+    {
+      "name": "partial-area-coverage",
+      "geometries": [
+        {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                2,
+                0
+              ],
+              [
+                2,
+                2
+              ],
+              [
+                0,
+                2
+              ],
+              [
+                0,
+                0
+              ]
+            ]
+          ]
+        },
+        {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                2,
+                2
+              ],
+              [
+                0,
+                2
+              ],
+              [
+                2,
+                0
+              ],
+              [
+                0,
+                0
+              ]
+            ]
+          ]
+        },
+        null
+      ],
+      "expected": {
+        "invalid": [
+          1
+        ],
+        "rules": [
+          {
+            "id": "Rule-016",
+            "participants": 1,
+            "coverage": "partial",
+            "checks": 0,
+            "candidates": 0,
+            "issues": []
+          },
+          {
+            "id": "Rule-017",
+            "participants": 1,
+            "coverage": "partial",
+            "checks": 1,
+            "candidates": 0,
+            "issues": []
+          }
+        ]
+      }
+    },
+    {
+      "name": "non-applicable-collection",
+      "geometries": [
+        {
+          "type": "GeometryCollection",
+          "geometries": [
+            {
+              "type": "Polygon",
+              "coordinates": [
+                [
+                  [
+                    0,
+                    0
+                  ],
+                  [
+                    2,
+                    0
+                  ],
+                  [
+                    2,
+                    2
+                  ],
+                  [
+                    0,
+                    2
+                  ],
+                  [
+                    0,
+                    0
+                  ]
+                ]
+              ]
+            }
+          ]
+        }
+      ],
+      "expected": {
+        "invalid": [],
+        "rules": [
+          {
+            "id": "Rule-013",
+            "participants": 0,
+            "coverage": "none",
+            "checks": 0,
+            "candidates": 0,
+            "issues": []
+          },
+          {
+            "id": "Rule-017",
+            "participants": 0,
+            "coverage": "none",
+            "checks": 0,
+            "candidates": 0,
+            "issues": []
+          }
+        ]
+      }
+    },
+    {
+      "name": "empty-dataset",
+      "geometries": [],
+      "expected": {
+        "invalid": [],
+        "rules": [
+          {
+            "id": "Rule-013",
+            "participants": 0,
+            "coverage": "none",
+            "checks": 0,
+            "candidates": 0,
+            "issues": []
+          },
+          {
+            "id": "Rule-014",
+            "participants": 0,
+            "coverage": "none",
+            "checks": 0,
+            "candidates": 0,
+            "issues": []
+          },
+          {
+            "id": "Rule-017",
+            "participants": 0,
+            "coverage": "none",
+            "checks": 0,
+            "candidates": 0,
+            "issues": []
+          }
+        ]
+      }
+    },
+    {
+      "name": "out-of-scope-dimensions",
+      "geometries": [
+        {
+          "type": "Point",
+          "coordinates": [
+            0,
+            0,
+            1
+          ]
+        },
+        null
+      ],
+      "expected": {
+        "invalid": [],
+        "rules": [
+          {
+            "id": "Rule-013",
+            "participants": 0,
+            "coverage": "none",
+            "checks": 0,
+            "candidates": 0,
+            "issues": []
+          }
+        ]
+      }
+    },
+    {
+      "name": "island-with-inner-hole",
+      "geometries": [
+        {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                10,
+                0
+              ],
+              [
+                10,
+                10
+              ],
+              [
+                0,
+                10
+              ],
+              [
+                0,
+                0
+              ]
+            ],
+            [
+              [
+                1,
+                1
+              ],
+              [
+                9,
+                1
+              ],
+              [
+                9,
+                9
+              ],
+              [
+                1,
+                9
+              ],
+              [
+                1,
+                1
+              ]
+            ]
+          ]
+        },
+        {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                3,
+                3
+              ],
+              [
+                7,
+                3
+              ],
+              [
+                7,
+                7
+              ],
+              [
+                3,
+                7
+              ],
+              [
+                3,
+                3
+              ]
+            ],
+            [
+              [
+                4,
+                4
+              ],
+              [
+                5,
+                4
+              ],
+              [
+                5,
+                5
+              ],
+              [
+                4,
+                5
+              ],
+              [
+                4,
+                4
+              ]
+            ]
+          ]
+        }
+      ],
+      "expected": {
+        "invalid": [],
+        "rules": [
+          {
+            "id": "Rule-017",
+            "participants": 2,
+            "coverage": "complete",
+            "checks": 1,
+            "candidates": 0,
+            "issues": [
+              {
+                "participants": [],
+                "location": {
+                  "x": 1,
+                  "y": 1
+                },
+                "geometry": {
+                  "type": "Polygon",
+                  "coordinates": [
+                    [
+                      [
+                        1,
+                        1
+                      ],
+                      [
+                        9,
+                        1
+                      ],
+                      [
+                        9,
+                        9
+                      ],
+                      [
+                        1,
+                        9
+                      ],
+                      [
+                        1,
+                        1
+                      ]
+                    ],
+                    [
+                      [
+                        3,
+                        3
+                      ],
+                      [
+                        7,
+                        3
+                      ],
+                      [
+                        7,
+                        7
+                      ],
+                      [
+                        3,
+                        7
+                      ],
+                      [
+                        3,
+                        3
+                      ]
+                    ]
+                  ]
+                }
+              },
+              {
+                "participants": [],
+                "location": {
+                  "x": 4,
+                  "y": 4
+                },
+                "geometry": {
+                  "type": "Polygon",
+                  "coordinates": [
+                    [
+                      [
+                        4,
+                        4
+                      ],
+                      [
+                        5,
+                        4
+                      ],
+                      [
+                        5,
+                        5
+                      ],
+                      [
+                        4,
+                        5
+                      ],
+                      [
+                        4,
+                        4
+                      ]
+                    ]
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

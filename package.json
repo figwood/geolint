@@ -1,0 +1,49 @@
+{
+  "name": "geolint",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "test": "node --test tests/*.test.mjs",
+    "test:engine": "node --test tests/integration/engine.mjs",
+    "test:parity": "node --test tests/integration/parity.mjs",
+    "test:input-parity": "node --test tests/integration/input-parity.mjs",
+    "test:e2e": "node --test tests/e2e/*.mjs",
+    "typecheck": "tsc --noEmit",
+    "build:core": "tsc -p tsconfig.build.json",
+    "build": "npm run build:core && node scripts/package-site.mjs",
+    "deploy": "npx wrangler deploy",
+    "predeploy": "npm run build",
+    "dev": "npm run build && python3 -m http.server 5173 --bind 127.0.0.1 --directory dist",
+    "baseline": "python3 scripts/native-baseline/generate.py",
+    "setup:geos": "python3 scripts/setup-geos.py",
+    "preview": "python3 -m http.server 5173 --bind 127.0.0.1 --directory dist",
+    "benchmark": "node scripts/benchmark/run.mjs",
+    "release:engine": "python3 scripts/release/build-engine.py",
+    "build:release": "npm run build:core && node scripts/package-site.mjs --release-dir .cache/release-engine",
+    "release:check": "node scripts/release/check.mjs",
+    "release:verify": "node scripts/release/verify.mjs",
+    "release": "npm run release:prepare && npm run release:engine && npm run release:check",
+    "release:prepare": "npm run setup:geos -- --skip-npm && bash validation/qgis/setup-env.sh && npx playwright install chromium"
+  },
+  "dependencies": {
+    "fflate": "0.8.3",
+    "geos-wasm": "3.1.1"
+  },
+  "devDependencies": {
+    "playwright": "1.62.1",
+    "typescript": "5.8.3"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/figwood/geolint.git"
+  },
+  "bugs": {
+    "url": "https://github.com/figwood/geolint/issues"
+  },
+  "homepage": "https://geolint.app/"
+}

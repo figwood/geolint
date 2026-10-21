@@ -1,0 +1,11 @@
+{
+  "rules": [
+    {
+      "id": "Rule-034",
+      "parameters": {
+        "maxThinness": 9,
+        "maxArea": 0
+      }
+    }
+  ]
+}

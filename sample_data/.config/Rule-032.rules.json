@@ -1,0 +1,11 @@
+{
+  "rules": [
+    {
+      "id": "Rule-032",
+      "parameters": {
+        "minAngle": 91,
+        "toleranceDigits": 8
+      }
+    }
+  ]
+}

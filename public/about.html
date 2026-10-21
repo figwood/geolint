@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>About GeoLint — How It Works, Libraries, Privacy &amp; Limits</title>
+<meta name="description" content="Learn how GeoLint uses geos-wasm and QGIS-inspired rules, which third-party libraries it uses, how files stay local, and its current limitations.">
+<link rel="icon" type="image/png" sizes="32x32" href="./favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
+<link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header><a class="brand" href="./"><img src="./site-icon-512.png" alt="" width="44" height="44"><span class="brand-copy"><span>GeoLint</span><span class="environment-badge" hidden>Preview</span><span>Geometry Inspector</span></span></a><nav aria-label="Main navigation"><a href="./help.html">Help</a><a href="./rules.html">Rules</a><a href="./about.html">About</a></nav></header>
+<main id="main">
+<article class="about-page">
+<h1>About</h1>
+
+<section id="method" class="panel" aria-labelledby="method-title">
+<h2 id="method-title">How it works</h2>
+<p>GeoLint uses geos-wasm to run the GEOS geometry engine as WebAssembly in your browser. GEOS provides geometry validity checks and operations such as equality, intersections and polygon unions. GeoLint combines these operations with checks for file structure, coordinates, geometry parts and line endpoints.</p>
+<p>Rule definitions and classification draw on QGIS Topology Checker and Geometry Checker. GeoLint implements selected single-layer checks and groups them into data structure, geometry validity, geometry constraints, topology and spatial relationships, and attribute constraints. Processing diagnostics are shown separately. The browser offers geometry checks; attribute constraints are available through API and batch configuration.</p>
+<p>File reading, parsing and inspection run in Web Workers. Findings identify the applicable rule, source records and available error locations. GeoLint reports problems without repairing the input. See the <a href="./rules.html">Rules reference</a> for each check's scope and parameters.</p>
+</section>
+
+<section id="third-party-notices" class="panel" aria-labelledby="third-party-notices-title">
+<h2 id="third-party-notices-title">Third-party libraries</h2>
+<table>
+<caption>Libraries used for browser inspection</caption>
+<thead><tr><th scope="col">Library</th><th scope="col">Version</th><th scope="col">Purpose</th></tr></thead>
+<tbody>
+<tr><th scope="row">geos-wasm</th><td>3.1.1</td><td>JavaScript interface to GEOS WebAssembly.</td></tr>
+<tr><th scope="row">GEOS</th><td>3.13.0</td><td>Geometry validity, spatial relationships and geometry operations.</td></tr>
+<tr><th scope="row">fflate</th><td>0.8.3</td><td>Local decompression of Shapefile ZIP archives.</td></tr>
+</tbody>
+</table>
+<p>GEOS and its wrapper are loaded as a separate module. Release builds rebuild the engine from pinned sources while retaining the geos-wasm interface. QGIS supplies reference rule definitions; it is not loaded into your browser.</p>
+<p><a href="./licenses/THIRD-PARTY-NOTICES.md">Third-party notices and source information</a> · <a href="./licenses/geos-wasm-LICENSE.txt">geos-wasm license text</a> · <a href="./licenses/GEOS-COPYING.txt">GEOS license text</a> · <a href="./vendor/fflate/LICENSE.txt">fflate license</a> · <a href="./LICENSE.txt">GeoLint MIT license</a></p>
+</section>
+
+<section id="privacy" class="panel" aria-labelledby="privacy-title">
+<h2 id="privacy-title">Privacy</h2>
+<p>Your selected files, geometry and attribute values are processed locally in your browser. GeoLint does not upload them to a server. Reading, ZIP extraction and inspection take place in local Web Workers.</p>
+<p>GeoLint does not save your files or inspection results in browser storage. Results remain in memory until replaced or the page closes. Reports are downloaded to your device and may contain filenames, feature IDs, error coordinates and overlap or gap geometry; handle them with the same care as your input.</p>
+<p>The browser contacts the hosting server to load the website, engine and public sample. These asset requests are separate from your selected data. The included hosting code does not inject analytics or third-party scripts; hosting access logs and browser extensions depend on your environment.</p>
+</section>
+
+<section id="limits" class="panel" aria-labelledby="limits-title">
+<h2 id="limits-title">Known limitations</h2>
+<p>GeoLint 0.1.0 is a development preview. Current limitations include:</p>
+<ul>
+<li><strong>Planar 2D only.</strong> Coordinates stay in their original units. CRS declarations are not validated, coordinates are not reprojected, and longitude/latitude measurements are not converted to metres. Z/M geometry is skipped.</li>
+<li><strong>Limited scope.</strong> No automatic repair, cross-layer checks, GeoPackage import or multi-layer archives. GeometryCollections are excluded from optional topology checks. A valid result covers only applicable selected checks and does not establish overall data quality.</li>
+<li><strong>Resource limits.</strong> Browser memory and rule budgets can stop large or complex inspections. There is no fixed file-byte limit. Cancelled or failed runs cannot produce a complete report.</li>
+<li><strong>Extreme Shapefile coordinates.</strong> Very large finite coordinates can overflow ring classification, omit polygon rings and produce incorrect validity results. This is a known issue pending correction.</li>
+<li><strong>Differences from QGIS.</strong> Rules follow documented algorithm semantics, but results are not guaranteed to match every QGIS version or GUI plugin error row. GEOS returns only the first validity reason for each geometry.</li>
+<li><strong>Compatibility still under review.</strong> Full desktop-browser, mobile-browser, spreadsheet CSV and large-file performance acceptance is incomplete. Public API and report formats may change.</li>
+</ul>
+</section>
+</article>
+</main>
+<footer>GeoLint · <a href="./about.html">About</a></footer>
+</body></html>

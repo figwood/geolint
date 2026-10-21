@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>How to Validate GeoJSON &amp; Shapefiles — GeoLint Help</title>
+    <meta name="description" content="Learn how to check GeoJSON and Shapefile files with GeoLint, understand results and export issue reports.">
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header><a class="brand" href="./"><img src="./site-icon-512.png" alt="" width="44" height="44"><span class="brand-copy"><span>GeoLint</span><span class="environment-badge" hidden>Preview</span><span>Geometry Inspector</span></span></a><nav aria-label="Main navigation"><a href="./help.html">Help</a><a href="./rules.html">Rules</a><a href="./about.html">About</a></nav></header>
+    <main id="main">
+        <article>
+            <h1>How to use GeoLint</h1>
+
+            <h2>Inspect a file</h2>
+            <ol>
+                <li>Choose a UTF-8 <code>.geojson</code> or <code>.json</code> file, a <code>.shp</code> file, or a ZIP containing exactly one Shapefile layer.</li>
+                <li>Review the file preview, then select the optional rules you want to run. Required rules are selected automatically.</li>
+                <li>Continue to the confirmation step and choose <strong>Start inspection</strong>. You can use Back to change the file or rules before the run starts.</li>
+                <li>When the inspection finishes, review the summary, filter the results, and open rows for details. Check coverage shows rules that were skipped or could not be completed.</li>
+                <li>Choose <strong>Download JSON</strong> or <strong>Download CSV</strong> to save the complete issue list. Filters and pagination do not limit the downloaded results.</li>
+            </ol>
+
+            <h2>Supported input</h2>
+            <p>GeoLint accepts GeoJSON geometries and features containing Point, MultiPoint, LineString, MultiLineString, Polygon, MultiPolygon, and GeometryCollection values. Shapefiles support 2D points, multipoints, polylines, and polygons.</p>
+            <p>For a Shapefile ZIP, include one layer. A matching DBF can provide the data preview; PRJ files are not interpreted and coordinates are not reprojected. Unsupported dimensions, empty geometries, malformed data, and unsupported archive formats are reported as skipped or failed input.</p>
+            <p>See <a href="./limitations.html">Known limitations</a> for the full list of input and rule boundaries.</p>
+
+            <h2>Understand the results</h2>
+            <ul>
+                <li><strong>Valid:</strong> the applicable checks found no problems.</li>
+                <li><strong>Invalid:</strong> a geometry or selected rule found a problem. The result includes the rule and location when available.</li>
+                <li><strong>Skipped:</strong> the input is outside a check's supported scope, such as an empty or unsupported geometry.</li>
+                <li><strong>Parse failed:</strong> the file or geometry could not be read.</li>
+            </ul>
+            <p>Read the <a href="./rules.html">Rules reference</a> for the checks, applicability, and parameters. A cancelled or failed inspection does not produce a complete report; choose another file or run the inspection again.</p>
+
+            <h2>Find a source record</h2>
+            <p>Feature indexes start at zero and follow the order of records in the input. Use the index shown in a result to locate the corresponding source record. IDs can repeat, so an index is the reliable way to distinguish records.</p>
+
+            <h2>Export issues</h2>
+            <p>Exports are available after a complete inspection. The file name is based on the input name and ends with <code>_check_result.json</code> or <code>_check_result.csv</code>. JSON preserves the report structure; CSV provides one row per issue. Both formats include all issues, including issues not visible on the current results page.</p>
+            <p>Return to the <a href="./">GeoLint inspector</a> to start another inspection.</p>
+        </article>
+    </main>
+    <footer>GeoLint · <a href="./about.html#third-party-notices">Third-party libraries</a></footer>
+</body>
+</html>

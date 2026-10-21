@@ -1,0 +1,2792 @@
+{
+  "sourceReference": {
+    "version": "3.44.0",
+    "commit": "5d9ba037df1",
+    "kind": "official-api-source"
+  },
+  "geosVersion": "3.13.0",
+  "cases": [
+    {
+      "name": "Rule-024-positive",
+      "ruleId": "Rule-024",
+      "checkClass": "QgsGeometrySelfIntersectionCheck",
+      "parameters": {
+        "toleranceDigits": 8
+      },
+      "geometries": [
+        {
+          "type": "LineString",
+          "coordinates": [
+            [
+              0,
+              0
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              0,
+              4
+            ],
+            [
+              4,
+              0
+            ]
+          ]
+        }
+      ],
+      "expected": {
+        "issues": [
+          {
+            "participants": [
+              0
+            ],
+            "location": {
+              "x": 2,
+              "y": 2
+            },
+            "occurrence": {
+              "sources": [
+                {
+                  "recordKey": "feature:0",
+                  "part": 0,
+                  "ring": 0,
+                  "segment": 0
+                },
+                {
+                  "recordKey": "feature:0",
+                  "part": 0,
+                  "ring": 0,
+                  "segment": 2
+                }
+              ]
+            },
+            "measurements": {}
+          }
+        ],
+        "participants": 1,
+        "coverage": "complete",
+        "state": "violated"
+      }
+    },
+    {
+      "name": "Rule-024-negative",
+      "ruleId": "Rule-024",
+      "checkClass": "QgsGeometrySelfIntersectionCheck",
+      "parameters": {
+        "toleranceDigits": 8
+      },
+      "geometries": [
+        {
+          "type": "LineString",
+          "coordinates": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              0
+            ],
+            [
+              1,
+              1
+            ]
+          ]
+        }
+      ],
+      "expected": {
+        "issues": [],
+        "participants": 1,
+        "coverage": "complete",
+        "state": "passed"
+      }
+    },
+    {
+      "name": "Rule-024-not-applicable",
+      "ruleId": "Rule-024",
+      "checkClass": "QgsGeometrySelfIntersectionCheck",
+      "parameters": {
+        "toleranceDigits": 8
+      },
+      "geometries": [
+        {
+          "type": "GeometryCollection",
+          "geometries": [
+            {
+              "type": "Point",
+              "coordinates": [
+                0,
+                0
+              ]
+            }
+          ]
+        }
+      ],
+      "expected": {
+        "issues": [],
+        "participants": 0,
+        "coverage": "none",
+        "state": "skipped"
+      }
+    },
+    {
+      "name": "Rule-025-positive",
+      "ruleId": "Rule-025",
+      "checkClass": "QgsGeometryDuplicateNodesCheck",
+      "parameters": {
+        "toleranceDigits": 8
+      },
+      "geometries": [
+        {
+          "type": "LineString",
+          "coordinates": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              0
+            ],
+            [
+              1,
+              0
+            ],
+            [
+              2,
+              0
+            ]
+          ]
+        }
+      ],
+      "expected": {
+        "issues": [
+          {
+            "participants": [
+              0
+            ],
+            "location": {
+              "x": 1,
+              "y": 0
+            },
+            "occurrence": {
+              "sources": [
+                {
+                  "recordKey": "feature:0",
+                  "part": 0,
+                  "ring": 0,
+                  "vertex": 2
+                }
+              ]
+            },
+            "measurements": {}
+          }
+        ],
+        "participants": 1,
+        "coverage": "complete",
+        "state": "violated"
+      }
+    },
+    {
+      "name": "Rule-025-negative",
+      "ruleId": "Rule-025",
+      "checkClass": "QgsGeometryDuplicateNodesCheck",
+      "parameters": {
+        "toleranceDigits": 8
+      },
+      "geometries": [
+        {
+          "type": "LineString",
+          "coordinates": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              0
+            ],
+            [
+              1,
+              1
+            ]
+          ]
+        }
+      ],
+      "expected": {
+        "issues": [],
+        "participants": 1,
+        "coverage": "complete",
+        "state": "passed"
+      }
+    },
+    {
+      "name": "Rule-025-not-applicable",
+      "ruleId": "Rule-025",
+      "checkClass": "QgsGeometryDuplicateNodesCheck",
+      "parameters": {
+        "toleranceDigits": 8
+      },
+      "geometries": [
+        {
+          "type": "GeometryCollection",
+          "geometries": [
+            {
+              "type": "Point",
+              "coordinates": [
+                0,
+                0
+              ]
+            }
+          ]
+        }
+      ],
+      "expected": {
+        "issues": [],
+        "participants": 0,
+        "coverage": "none",
+        "state": "skipped"
+      }
+    },
+    {
+      "name": "Rule-026-positive",
+      "ruleId": "Rule-026",
+      "checkClass": "QgsGeometrySelfContactCheck",
+      "parameters": {
+        "toleranceDigits": 8
+      },
+      "geometries": [
+        {
+          "type": "LineString",
+          "coordinates": [
+            [
+              0,
+              0
+            ],
+            [
+              4,
+              0
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              2,
+              0
+            ],
+            [
+              2,
+              -2
+            ]
+          ]
+        }
+      ],
+      "expected": {
+        "issues": [
+          {
+            "participants": [
+              0
+            ],
+            "location": {
+              "x": 2,
+              "y": 0
+            },
+            "occurrence": {
+              "sources": [
+                {
+                  "recordKey": "feature:0",
+                  "part": 0,
+                  "ring": 0,
+                  "vertex": 3
+                }
+              ]
+            },
+            "measurements": {}
+          }
+        ],
+        "participants": 1,
+        "coverage": "complete",
+        "state": "violated"
+      }
+    },
+    {
+      "name": "Rule-026-negative",
+      "ruleId": "Rule-026",
+      "checkClass": "QgsGeometrySelfContactCheck",
+      "parameters": {
+        "toleranceDigits": 8
+      },
+      "geometries": [
+        {
+          "type": "LineString",
+          "coordinates": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              0
+            ],
+            [
+              1,
+              1
+            ]
+          ]
+        }
+      ],
+      "expected": {
+        "issues": [],
+        "participants": 1,
+        "coverage": "complete",
+        "state": "passed"
+      }
+    },
+    {
+      "name": "Rule-026-not-applicable",
+      "ruleId": "Rule-026",
+      "checkClass": "QgsGeometrySelfContactCheck",
+      "parameters": {
+        "toleranceDigits": 8
+      },
+      "geometries": [
+        {
+          "type": "GeometryCollection",
+          "geometries": [
+            {
+              "type": "Point",
+              "coordinates": [
+                0,
+                0
+              ]
+            }
+          ]
+        }
+      ],
+      "expected": {
+        "issues": [],
+        "participants": 0,
+        "coverage": "none",
+        "state": "skipped"
+      }
+    },
+    {
+      "name": "Rule-027-positive",
+      "ruleId": "Rule-027",
+      "checkClass": "QgsGeometryDegeneratePolygonCheck",
+      "parameters": {},
+      "geometries": [
+        {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                1,
+                0
+              ],
+              [
+                0,
+                0
+              ]
+            ]
+          ]
+        }
+      ],
+      "expected": {
+        "issues": [
+          {
+            "participants": [
+              0
+            ],
+            "location": {
+              "x": 0,
+              "y": 0
+            },
+            "occurrence": {
+              "sources": [
+                {
+                  "recordKey": "feature:0",
+                  "part": 0,
+                  "ring": 0
+                }
+              ]
+            },
+            "measurements": {
+              "nodeCount": 2
+            }
+          }
+        ],
+        "participants": 1,
+        "coverage": "complete",
+        "state": "violated"
+      }
+    },
+    {
+      "name": "Rule-027-negative",
+      "ruleId": "Rule-027",
+      "checkClass": "QgsGeometryDegeneratePolygonCheck",
+      "parameters": {},
+      "geometries": [
+        {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                4,
+                0
+              ],
+              [
+                4,
+                4
+              ],
+              [
+                0,
+                4
+              ],
+              [
+                0,
+                0
+              ]
+            ]
+          ]
+        }
+      ],
+      "expected": {
+        "issues": [],
+        "participants": 1,
+        "coverage": "complete",
+        "state": "passed"
+      }
+    },
+    {
+      "name": "Rule-027-not-applicable",
+      "ruleId": "Rule-027",
+      "checkClass": "QgsGeometryDegeneratePolygonCheck",
+      "parameters": {},
+      "geometries": [
+        {
+          "type": "GeometryCollection",
+          "geometries": [
+            {
+              "type": "Point",
+              "coordinates": [
+                0,
+                0
+              ]
+            }
+          ]
+        }
+      ],
+      "expected": {
+        "issues": [],
+        "participants": 0,
+        "coverage": "none",
+        "state": "skipped"
+      }
+    },
+    {
+      "name": "Rule-028-positive",
+      "ruleId": "Rule-028",
+      "checkClass": "QgsGeometryHoleCheck",
+      "parameters": {},
+      "geometries": [
+        {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                10,
+                0
+              ],
+              [
+                10,
+                10
+              ],
+              [
+                0,
+                10
+              ],
+              [
+                0,
+                0
+              ]
+            ],
+            [
+              [
+                1,
+                1
+              ],
+              [
+                3,
+                1
+              ],
+              [
+                3,
+                3
+              ],
+              [
+                1,
+                3
+              ],
+              [
+                1,
+                1
+              ]
+            ]
+          ]
+        }
+      ],
+      "expected": {
+        "issues": [
+          {
+            "participants": [
+              0
+            ],
+            "location": {
+              "x": 2,
+              "y": 2
+            },
+            "occurrence": {
+              "sources": [
+                {
+                  "recordKey": "feature:0",
+                  "part": 0,
+                  "ring": 1
+                }
+              ]
+            },
+            "measurements": {}
+          }
+        ],
+        "participants": 1,
+        "coverage": "complete",
+        "state": "violated"
+      }
+    },
+    {
+      "name": "Rule-028-negative",
+      "ruleId": "Rule-028",
+      "checkClass": "QgsGeometryHoleCheck",
+      "parameters": {},
+      "geometries": [
+        {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                4,
+                0
+              ],
+              [
+                4,
+                4
+              ],
+              [
+                0,
+                4
+              ],
+              [
+                0,
+                0
+              ]
+            ]
+          ]
+        }
+      ],
+      "expected": {
+        "issues": [],
+        "participants": 1,
+        "coverage": "complete",
+        "state": "passed"
+      }
+    },
+    {
+      "name": "Rule-028-not-applicable",
+      "ruleId": "Rule-028",
+      "checkClass": "QgsGeometryHoleCheck",
+      "parameters": {},
+      "geometries": [
+        {
+          "type": "GeometryCollection",
+          "geometries": [
+            {
+              "type": "Point",
+              "coordinates": [
+                0,
+                0
+              ]
+            }
+          ]
+        }
+      ],
+      "expected": {
+        "issues": [],
+        "participants": 0,
+        "coverage": "none",
+        "state": "skipped"
+      }
+    },
+    {
+      "name": "Rule-029-positive",
+      "ruleId": "Rule-029",
+      "checkClass": "QgsGeometryMultipartCheck",
+      "parameters": {},
+      "geometries": [
+        {
+          "type": "MultiPoint",
+          "coordinates": [
+            [
+              0,
+              0
+            ]
+          ]
+        }
+      ],
+      "expected": {
+        "issues": [
+          {
+            "participants": [
+              0
+            ],
+            "location": {
+              "x": 0,
+              "y": 0
+            },
+            "occurrence": {
+              "sources": [
+                {
+                  "recordKey": "feature:0"
+                }
+              ]
+            },
+            "measurements": {
+              "partCount": 1
+            }
+          }
+        ],
+        "participants": 1,
+        "coverage": "complete",
+        "state": "violated"
+      }
+    },
+    {
+      "name": "Rule-029-negative",
+      "ruleId": "Rule-029",
+      "checkClass": "QgsGeometryMultipartCheck",
+      "parameters": {},
+      "geometries": [
+        {
+          "type": "MultiPoint",
+          "coordinates": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              1
+            ]
+          ]
+        }
+      ],
+      "expected": {
+        "issues": [],
+        "participants": 1,
+        "coverage": "complete",
+        "state": "passed"
+      }
+    },
+    {
+      "name": "Rule-029-not-applicable",
+      "ruleId": "Rule-029",
+      "checkClass": "QgsGeometryMultipartCheck",
+      "parameters": {},
+      "geometries": [
+        {
+          "type": "GeometryCollection",
+          "geometries": [
+            {
+              "type": "Point",
+              "coordinates": [
+                0,
+                0
+              ]
+            }
+          ]
+        }
+      ],
+      "expected": {
+        "issues": [],
+        "participants": 0,
+        "coverage": "none",
+        "state": "skipped"
+      }
+    },
+    {
+      "name": "Rule-030-positive",
+      "ruleId": "Rule-030",
+      "checkClass": "QgsGeometryDangleCheck",
+      "parameters": {
+        "toleranceDigits": 8
+      },
+      "geometries": [
+        {
+          "type": "LineString",
+          "coordinates": [
+            [
+              0,
+              0
+            ],
+            [
+              4,
+              0
+            ]
+          ]
+        }
+      ],
+      "expected": {
+        "issues": [
+          {
+            "participants": [
+              0
+            ],
+            "location": {
+              "x": 0,
+              "y": 0
+            },
+            "occurrence": {
+              "sources": [
+                {
+                  "recordKey": "feature:0",
+                  "part": 0,
+                  "vertex": 0
+                }
+              ]
+            },
+            "measurements": {}
+          },
+          {
+            "participants": [
+              0
+            ],
+            "location": {
+              "x": 4,
+              "y": 0
+            },
+            "occurrence": {
+              "sources": [
+                {
+                  "recordKey": "feature:0",
+                  "part": 0,
+                  "vertex": 1
+                }
+              ]
+            },
+            "measurements": {}
+          }
+        ],
+        "participants": 1,
+        "coverage": "complete",
+        "state": "violated"
+      }
+    },
+    {
+      "name": "Rule-030-negative",
+      "ruleId": "Rule-030",
+      "checkClass": "QgsGeometryDangleCheck",
+      "parameters": {
+        "toleranceDigits": 8
+      },
+      "geometries": [
+        {
+          "type": "LineString",
+          "coordinates": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              0
+            ]
+          ]
+        },
+        {
+          "type": "LineString",
+          "coordinates": [
+            [
+              1,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ]
+        }
+      ],
+      "expected": {
+        "issues": [],
+        "participants": 2,
+        "coverage": "complete",
+        "state": "passed"
+      }
+    },
+    {
+      "name": "Rule-030-not-applicable",
+      "ruleId": "Rule-030",
+      "checkClass": "QgsGeometryDangleCheck",
+      "parameters": {
+        "toleranceDigits": 8
+      },
+      "geometries": [
+        {
+          "type": "GeometryCollection",
+          "geometries": [
+            {
+              "type": "Point",
+              "coordinates": [
+                0,
+                0
+              ]
+            }
+          ]
+        }
+      ],
+      "expected": {
+        "issues": [],
+        "participants": 0,
+        "coverage": "none",
+        "state": "skipped"
+      }
+    },
+    {
+      "name": "Rule-031-positive",
+      "ruleId": "Rule-031",
+      "checkClass": "QgsGeometrySegmentLengthCheck",
+      "parameters": {
+        "minLength": 2,
+        "toleranceDigits": 8
+      },
+      "geometries": [
+        {
+          "type": "LineString",
+          "coordinates": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              0
+            ],
+            [
+              1,
+              1
+            ]
+          ]
+        }
+      ],
+      "expected": {
+        "issues": [
+          {
+            "participants": [
+              0
+            ],
+            "location": {
+              "x": 0.5,
+              "y": 0
+            },
+            "occurrence": {
+              "sources": [
+                {
+                  "recordKey": "feature:0",
+                  "part": 0,
+                  "ring": 0,
+                  "vertex": 1
+                }
+              ]
+            },
+            "measurements": {
+              "length": 1,
+              "minLength": 2
+            }
+          },
+          {
+            "participants": [
+              0
+            ],
+            "location": {
+              "x": 1,
+              "y": 0.5
+            },
+            "occurrence": {
+              "sources": [
+                {
+                  "recordKey": "feature:0",
+                  "part": 0,
+                  "ring": 0,
+                  "vertex": 2
+                }
+              ]
+            },
+            "measurements": {
+              "length": 1,
+              "minLength": 2
+            }
+          }
+        ],
+        "participants": 1,
+        "coverage": "complete",
+        "state": "violated"
+      }
+    },
+    {
+      "name": "Rule-031-negative",
+      "ruleId": "Rule-031",
+      "checkClass": "QgsGeometrySegmentLengthCheck",
+      "parameters": {
+        "minLength": 2,
+        "toleranceDigits": 8
+      },
+      "geometries": [
+        {
+          "type": "LineString",
+          "coordinates": [
+            [
+              0,
+              0
+            ],
+            [
+              2,
+              0
+            ]
+          ]
+        }
+      ],
+      "expected": {
+        "issues": [],
+        "participants": 1,
+        "coverage": "complete",
+        "state": "passed"
+      }
+    },
+    {
+      "name": "Rule-031-not-applicable",
+      "ruleId": "Rule-031",
+      "checkClass": "QgsGeometrySegmentLengthCheck",
+      "parameters": {
+        "minLength": 2,
+        "toleranceDigits": 8
+      },
+      "geometries": [
+        {
+          "type": "GeometryCollection",
+          "geometries": [
+            {
+              "type": "Point",
+              "coordinates": [
+                0,
+                0
+              ]
+            }
+          ]
+        }
+      ],
+      "expected": {
+        "issues": [],
+        "participants": 0,
+        "coverage": "none",
+        "state": "skipped"
+      }
+    },
+    {
+      "name": "Rule-032-positive",
+      "ruleId": "Rule-032",
+      "checkClass": "QgsGeometryAngleCheck",
+      "parameters": {
+        "minAngle": 91,
+        "toleranceDigits": 8
+      },
+      "geometries": [
+        {
+          "type": "LineString",
+          "coordinates": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              0
+            ],
+            [
+              1,
+              1
+            ]
+          ]
+        }
+      ],
+      "expected": {
+        "issues": [
+          {
+            "participants": [
+              0
+            ],
+            "location": {
+              "x": 1,
+              "y": 0
+            },
+            "occurrence": {
+              "sources": [
+                {
+                  "recordKey": "feature:0",
+                  "part": 0,
+                  "ring": 0,
+                  "vertex": 1
+                }
+              ]
+            },
+            "measurements": {
+              "angle": 90,
+              "minAngle": 91
+            }
+          }
+        ],
+        "participants": 1,
+        "coverage": "complete",
+        "state": "violated"
+      }
+    },
+    {
+      "name": "Rule-032-negative",
+      "ruleId": "Rule-032",
+      "checkClass": "QgsGeometryAngleCheck",
+      "parameters": {
+        "minAngle": 91,
+        "toleranceDigits": 8
+      },
+      "geometries": [
+        {
+          "type": "LineString",
+          "coordinates": [
+            [
+              0,
+              0
+            ],
+            [
+              4,
+              0
+            ]
+          ]
+        }
+      ],
+      "expected": {
+        "issues": [],
+        "participants": 1,
+        "coverage": "complete",
+        "state": "passed"
+      }
+    },
+    {
+      "name": "Rule-032-not-applicable",
+      "ruleId": "Rule-032",
+      "checkClass": "QgsGeometryAngleCheck",
+      "parameters": {
+        "minAngle": 91,
+        "toleranceDigits": 8
+      },
+      "geometries": [
+        {
+          "type": "GeometryCollection",
+          "geometries": [
+            {
+              "type": "Point",
+              "coordinates": [
+                0,
+                0
+              ]
+            }
+          ]
+        }
+      ],
+      "expected": {
+        "issues": [],
+        "participants": 0,
+        "coverage": "none",
+        "state": "skipped"
+      }
+    },
+    {
+      "name": "Rule-033-positive",
+      "ruleId": "Rule-033",
+      "checkClass": "QgsGeometryAreaCheck",
+      "parameters": {
+        "minArea": 5
+      },
+      "geometries": [
+        {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                2,
+                0
+              ],
+              [
+                2,
+                2
+              ],
+              [
+                0,
+                2
+              ],
+              [
+                0,
+                0
+              ]
+            ]
+          ]
+        }
+      ],
+      "expected": {
+        "issues": [
+          {
+            "participants": [
+              0
+            ],
+            "location": {
+              "x": 1,
+              "y": 1
+            },
+            "occurrence": {
+              "sources": [
+                {
+                  "recordKey": "feature:0",
+                  "part": 0
+                }
+              ]
+            },
+            "measurements": {
+              "area": 4,
+              "minArea": 5
+            }
+          }
+        ],
+        "participants": 1,
+        "coverage": "complete",
+        "state": "violated"
+      }
+    },
+    {
+      "name": "Rule-033-negative",
+      "ruleId": "Rule-033",
+      "checkClass": "QgsGeometryAreaCheck",
+      "parameters": {
+        "minArea": 5
+      },
+      "geometries": [
+        {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                4,
+                0
+              ],
+              [
+                4,
+                4
+              ],
+              [
+                0,
+                4
+              ],
+              [
+                0,
+                0
+              ]
+            ]
+          ]
+        }
+      ],
+      "expected": {
+        "issues": [],
+        "participants": 1,
+        "coverage": "complete",
+        "state": "passed"
+      }
+    },
+    {
+      "name": "Rule-033-not-applicable",
+      "ruleId": "Rule-033",
+      "checkClass": "QgsGeometryAreaCheck",
+      "parameters": {
+        "minArea": 5
+      },
+      "geometries": [
+        {
+          "type": "GeometryCollection",
+          "geometries": [
+            {
+              "type": "Point",
+              "coordinates": [
+                0,
+                0
+              ]
+            }
+          ]
+        }
+      ],
+      "expected": {
+        "issues": [],
+        "participants": 0,
+        "coverage": "none",
+        "state": "skipped"
+      }
+    },
+    {
+      "name": "Rule-034-positive",
+      "ruleId": "Rule-034",
+      "checkClass": "QgsGeometrySliverPolygonCheck",
+      "parameters": {
+        "maxThinness": 9,
+        "maxArea": 0
+      },
+      "geometries": [
+        {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                10,
+                0
+              ],
+              [
+                10,
+                1
+              ],
+              [
+                0,
+                1
+              ],
+              [
+                0,
+                0
+              ]
+            ]
+          ]
+        }
+      ],
+      "expected": {
+        "issues": [
+          {
+            "participants": [
+              0
+            ],
+            "location": {
+              "x": 5,
+              "y": 0.5
+            },
+            "occurrence": {
+              "sources": [
+                {
+                  "recordKey": "feature:0",
+                  "part": 0
+                }
+              ]
+            },
+            "measurements": {
+              "thinness": 10,
+              "area": 10,
+              "maxThinness": 9,
+              "maxArea": 0
+            }
+          }
+        ],
+        "participants": 1,
+        "coverage": "complete",
+        "state": "violated"
+      }
+    },
+    {
+      "name": "Rule-034-negative",
+      "ruleId": "Rule-034",
+      "checkClass": "QgsGeometrySliverPolygonCheck",
+      "parameters": {
+        "maxThinness": 9,
+        "maxArea": 0
+      },
+      "geometries": [
+        {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                4,
+                0
+              ],
+              [
+                4,
+                4
+              ],
+              [
+                0,
+                4
+              ],
+              [
+                0,
+                0
+              ]
+            ]
+          ]
+        }
+      ],
+      "expected": {
+        "issues": [],
+        "participants": 1,
+        "coverage": "complete",
+        "state": "passed"
+      }
+    },
+    {
+      "name": "Rule-034-not-applicable",
+      "ruleId": "Rule-034",
+      "checkClass": "QgsGeometrySliverPolygonCheck",
+      "parameters": {
+        "maxThinness": 9,
+        "maxArea": 0
+      },
+      "geometries": [
+        {
+          "type": "GeometryCollection",
+          "geometries": [
+            {
+              "type": "Point",
+              "coordinates": [
+                0,
+                0
+              ]
+            }
+          ]
+        }
+      ],
+      "expected": {
+        "issues": [],
+        "participants": 0,
+        "coverage": "none",
+        "state": "skipped"
+      }
+    },
+    {
+      "name": "Rule-035-positive",
+      "ruleId": "Rule-035",
+      "checkClass": "QgsGeometryDuplicateCheck",
+      "parameters": {
+        "toleranceDigits": 8
+      },
+      "geometries": [
+        {
+          "type": "Point",
+          "coordinates": [
+            0,
+            0
+          ]
+        },
+        {
+          "type": "Point",
+          "coordinates": [
+            0,
+            0
+          ]
+        },
+        {
+          "type": "Point",
+          "coordinates": [
+            0,
+            0
+          ]
+        }
+      ],
+      "expected": {
+        "issues": [
+          {
+            "participants": [
+              1,
+              0
+            ],
+            "location": {
+              "x": 0,
+              "y": 0
+            },
+            "occurrence": {
+              "sources": [
+                {
+                  "recordKey": "feature:1"
+                },
+                {
+                  "recordKey": "feature:0"
+                }
+              ]
+            },
+            "measurements": {}
+          },
+          {
+            "participants": [
+              2,
+              0,
+              1
+            ],
+            "location": {
+              "x": 0,
+              "y": 0
+            },
+            "occurrence": {
+              "sources": [
+                {
+                  "recordKey": "feature:2"
+                },
+                {
+                  "recordKey": "feature:0"
+                },
+                {
+                  "recordKey": "feature:1"
+                }
+              ]
+            },
+            "measurements": {}
+          }
+        ],
+        "participants": 3,
+        "coverage": "complete",
+        "state": "violated"
+      }
+    },
+    {
+      "name": "Rule-035-negative",
+      "ruleId": "Rule-035",
+      "checkClass": "QgsGeometryDuplicateCheck",
+      "parameters": {
+        "toleranceDigits": 8
+      },
+      "geometries": [
+        {
+          "type": "Point",
+          "coordinates": [
+            0,
+            0
+          ]
+        },
+        {
+          "type": "Point",
+          "coordinates": [
+            1,
+            1
+          ]
+        }
+      ],
+      "expected": {
+        "issues": [],
+        "participants": 2,
+        "coverage": "complete",
+        "state": "passed"
+      }
+    },
+    {
+      "name": "Rule-035-not-applicable",
+      "ruleId": "Rule-035",
+      "checkClass": "QgsGeometryDuplicateCheck",
+      "parameters": {
+        "toleranceDigits": 8
+      },
+      "geometries": [
+        {
+          "type": "GeometryCollection",
+          "geometries": [
+            {
+              "type": "Point",
+              "coordinates": [
+                0,
+                0
+              ]
+            }
+          ]
+        }
+      ],
+      "expected": {
+        "issues": [],
+        "participants": 0,
+        "coverage": "none",
+        "state": "skipped"
+      }
+    },
+    {
+      "name": "Rule-036-positive",
+      "ruleId": "Rule-036",
+      "checkClass": "QgsGeometryContainedCheck",
+      "parameters": {
+        "toleranceDigits": 8
+      },
+      "geometries": [
+        {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                4,
+                0
+              ],
+              [
+                4,
+                4
+              ],
+              [
+                0,
+                4
+              ],
+              [
+                0,
+                0
+              ]
+            ]
+          ]
+        },
+        {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                1,
+                1
+              ],
+              [
+                2,
+                1
+              ],
+              [
+                2,
+                2
+              ],
+              [
+                1,
+                2
+              ],
+              [
+                1,
+                1
+              ]
+            ]
+          ]
+        }
+      ],
+      "expected": {
+        "issues": [
+          {
+            "participants": [
+              1,
+              0
+            ],
+            "location": {
+              "x": 1.5,
+              "y": 1.5
+            },
+            "occurrence": {
+              "sources": [
+                {
+                  "recordKey": "feature:1"
+                },
+                {
+                  "recordKey": "feature:0"
+                }
+              ]
+            },
+            "measurements": {}
+          }
+        ],
+        "participants": 2,
+        "coverage": "complete",
+        "state": "violated"
+      }
+    },
+    {
+      "name": "Rule-036-negative",
+      "ruleId": "Rule-036",
+      "checkClass": "QgsGeometryContainedCheck",
+      "parameters": {
+        "toleranceDigits": 8
+      },
+      "geometries": [
+        {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                4,
+                0
+              ],
+              [
+                4,
+                4
+              ],
+              [
+                0,
+                4
+              ],
+              [
+                0,
+                0
+              ]
+            ]
+          ]
+        },
+        {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                5,
+                5
+              ],
+              [
+                9,
+                5
+              ],
+              [
+                9,
+                9
+              ],
+              [
+                5,
+                9
+              ],
+              [
+                5,
+                5
+              ]
+            ]
+          ]
+        }
+      ],
+      "expected": {
+        "issues": [],
+        "participants": 2,
+        "coverage": "complete",
+        "state": "passed"
+      }
+    },
+    {
+      "name": "Rule-036-not-applicable",
+      "ruleId": "Rule-036",
+      "checkClass": "QgsGeometryContainedCheck",
+      "parameters": {
+        "toleranceDigits": 8
+      },
+      "geometries": [
+        {
+          "type": "GeometryCollection",
+          "geometries": [
+            {
+              "type": "Point",
+              "coordinates": [
+                0,
+                0
+              ]
+            }
+          ]
+        }
+      ],
+      "expected": {
+        "issues": [],
+        "participants": 0,
+        "coverage": "none",
+        "state": "skipped"
+      }
+    },
+    {
+      "name": "Rule-037-positive",
+      "ruleId": "Rule-037",
+      "checkClass": "QgsGeometryOverlapCheck",
+      "parameters": {
+        "maxArea": 9,
+        "toleranceDigits": 8
+      },
+      "geometries": [
+        {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                4,
+                0
+              ],
+              [
+                4,
+                4
+              ],
+              [
+                0,
+                4
+              ],
+              [
+                0,
+                0
+              ]
+            ]
+          ]
+        },
+        {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                2,
+                0
+              ],
+              [
+                6,
+                0
+              ],
+              [
+                6,
+                4
+              ],
+              [
+                2,
+                4
+              ],
+              [
+                2,
+                0
+              ]
+            ]
+          ]
+        }
+      ],
+      "expected": {
+        "issues": [
+          {
+            "participants": [
+              0,
+              1
+            ],
+            "location": {
+              "x": 3,
+              "y": 2
+            },
+            "occurrence": {
+              "sources": [
+                {
+                  "recordKey": "feature:0"
+                },
+                {
+                  "recordKey": "feature:1"
+                }
+              ],
+              "region": 0
+            },
+            "measurements": {
+              "area": 8,
+              "maxArea": 9
+            },
+            "geometry": {
+              "type": "Polygon",
+              "coordinates": [
+                [
+                  [
+                    2,
+                    0
+                  ],
+                  [
+                    4,
+                    0
+                  ],
+                  [
+                    4,
+                    4
+                  ],
+                  [
+                    2,
+                    4
+                  ],
+                  [
+                    2,
+                    0
+                  ]
+                ]
+              ]
+            }
+          }
+        ],
+        "participants": 2,
+        "coverage": "complete",
+        "state": "violated"
+      }
+    },
+    {
+      "name": "Rule-037-negative",
+      "ruleId": "Rule-037",
+      "checkClass": "QgsGeometryOverlapCheck",
+      "parameters": {
+        "maxArea": 9,
+        "toleranceDigits": 8
+      },
+      "geometries": [
+        {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                4,
+                0
+              ],
+              [
+                4,
+                4
+              ],
+              [
+                0,
+                4
+              ],
+              [
+                0,
+                0
+              ]
+            ]
+          ]
+        },
+        {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                4,
+                0
+              ],
+              [
+                8,
+                0
+              ],
+              [
+                8,
+                4
+              ],
+              [
+                4,
+                4
+              ],
+              [
+                4,
+                0
+              ]
+            ]
+          ]
+        }
+      ],
+      "expected": {
+        "issues": [],
+        "participants": 2,
+        "coverage": "complete",
+        "state": "passed"
+      }
+    },
+    {
+      "name": "Rule-037-not-applicable",
+      "ruleId": "Rule-037",
+      "checkClass": "QgsGeometryOverlapCheck",
+      "parameters": {
+        "maxArea": 9,
+        "toleranceDigits": 8
+      },
+      "geometries": [
+        {
+          "type": "GeometryCollection",
+          "geometries": [
+            {
+              "type": "Point",
+              "coordinates": [
+                0,
+                0
+              ]
+            }
+          ]
+        }
+      ],
+      "expected": {
+        "issues": [],
+        "participants": 0,
+        "coverage": "none",
+        "state": "skipped"
+      }
+    },
+    {
+      "name": "Rule-038-positive",
+      "ruleId": "Rule-038",
+      "checkClass": "QgsGeometryGapCheck",
+      "parameters": {
+        "toleranceDigits": 8,
+        "maxArea": 0
+      },
+      "geometries": [
+        {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                10,
+                0
+              ],
+              [
+                10,
+                10
+              ],
+              [
+                0,
+                10
+              ],
+              [
+                0,
+                0
+              ]
+            ],
+            [
+              [
+                2,
+                2
+              ],
+              [
+                8,
+                2
+              ],
+              [
+                8,
+                8
+              ],
+              [
+                2,
+                8
+              ],
+              [
+                2,
+                2
+              ]
+            ]
+          ]
+        }
+      ],
+      "expected": {
+        "issues": [
+          {
+            "participants": [],
+            "location": {
+              "x": 5,
+              "y": 5
+            },
+            "occurrence": {
+              "sources": [],
+              "region": 0
+            },
+            "measurements": {
+              "area": 36,
+              "maxArea": 0
+            },
+            "geometry": {
+              "type": "Polygon",
+              "coordinates": [
+                [
+                  [
+                    2,
+                    2
+                  ],
+                  [
+                    8,
+                    2
+                  ],
+                  [
+                    8,
+                    8
+                  ],
+                  [
+                    2,
+                    8
+                  ],
+                  [
+                    2,
+                    2
+                  ]
+                ]
+              ]
+            }
+          }
+        ],
+        "participants": 1,
+        "coverage": "complete",
+        "state": "violated"
+      }
+    },
+    {
+      "name": "Rule-038-negative",
+      "ruleId": "Rule-038",
+      "checkClass": "QgsGeometryGapCheck",
+      "parameters": {
+        "toleranceDigits": 8,
+        "maxArea": 0
+      },
+      "geometries": [
+        {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                4,
+                0
+              ],
+              [
+                4,
+                4
+              ],
+              [
+                0,
+                4
+              ],
+              [
+                0,
+                0
+              ]
+            ]
+          ]
+        }
+      ],
+      "expected": {
+        "issues": [],
+        "participants": 1,
+        "coverage": "complete",
+        "state": "passed"
+      }
+    },
+    {
+      "name": "Rule-038-not-applicable",
+      "ruleId": "Rule-038",
+      "checkClass": "QgsGeometryGapCheck",
+      "parameters": {
+        "toleranceDigits": 8,
+        "maxArea": 0
+      },
+      "geometries": [
+        {
+          "type": "GeometryCollection",
+          "geometries": [
+            {
+              "type": "Point",
+              "coordinates": [
+                0,
+                0
+              ]
+            }
+          ]
+        }
+      ],
+      "expected": {
+        "issues": [],
+        "participants": 0,
+        "coverage": "none",
+        "state": "skipped"
+      }
+    },
+    {
+      "name": "Rule-039-positive",
+      "ruleId": "Rule-039",
+      "checkClass": "QgsGeometryLineIntersectionCheck",
+      "parameters": {
+        "toleranceDigits": 8
+      },
+      "geometries": [
+        {
+          "type": "MultiLineString",
+          "coordinates": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                4,
+                4
+              ]
+            ],
+            [
+              [
+                0,
+                4
+              ],
+              [
+                4,
+                0
+              ]
+            ]
+          ]
+        }
+      ],
+      "expected": {
+        "issues": [
+          {
+            "participants": [
+              0
+            ],
+            "location": {
+              "x": 2,
+              "y": 2
+            },
+            "occurrence": {
+              "sources": [
+                {
+                  "recordKey": "feature:0",
+                  "part": 0,
+                  "segment": 0
+                },
+                {
+                  "recordKey": "feature:0",
+                  "part": 1,
+                  "segment": 0
+                }
+              ]
+            },
+            "measurements": {}
+          }
+        ],
+        "participants": 1,
+        "coverage": "complete",
+        "state": "violated"
+      }
+    },
+    {
+      "name": "Rule-039-negative",
+      "ruleId": "Rule-039",
+      "checkClass": "QgsGeometryLineIntersectionCheck",
+      "parameters": {
+        "toleranceDigits": 8
+      },
+      "geometries": [
+        {
+          "type": "LineString",
+          "coordinates": [
+            [
+              0,
+              0
+            ],
+            [
+              4,
+              0
+            ]
+          ]
+        },
+        {
+          "type": "LineString",
+          "coordinates": [
+            [
+              0,
+              1
+            ],
+            [
+              4,
+              1
+            ]
+          ]
+        }
+      ],
+      "expected": {
+        "issues": [],
+        "participants": 2,
+        "coverage": "complete",
+        "state": "passed"
+      }
+    },
+    {
+      "name": "Rule-039-not-applicable",
+      "ruleId": "Rule-039",
+      "checkClass": "QgsGeometryLineIntersectionCheck",
+      "parameters": {
+        "toleranceDigits": 8
+      },
+      "geometries": [
+        {
+          "type": "GeometryCollection",
+          "geometries": [
+            {
+              "type": "Point",
+              "coordinates": [
+                0,
+                0
+              ]
+            }
+          ]
+        }
+      ],
+      "expected": {
+        "issues": [],
+        "participants": 0,
+        "coverage": "none",
+        "state": "skipped"
+      }
+    },
+    {
+      "name": "Rule-040-positive",
+      "ruleId": "Rule-040",
+      "checkClass": "QgsGeometryTypeCheck",
+      "parameters": {
+        "allowedTypes": [
+          "Point"
+        ]
+      },
+      "geometries": [
+        {
+          "type": "MultiPoint",
+          "coordinates": [
+            [
+              0,
+              0
+            ]
+          ]
+        }
+      ],
+      "expected": {
+        "issues": [
+          {
+            "participants": [
+              0
+            ],
+            "location": {
+              "x": 0,
+              "y": 0
+            },
+            "occurrence": {
+              "sources": [
+                {
+                  "recordKey": "feature:0"
+                }
+              ]
+            },
+            "measurements": {}
+          }
+        ],
+        "participants": 1,
+        "coverage": "complete",
+        "state": "violated"
+      }
+    },
+    {
+      "name": "Rule-040-negative",
+      "ruleId": "Rule-040",
+      "checkClass": "QgsGeometryTypeCheck",
+      "parameters": {
+        "allowedTypes": [
+          "Point"
+        ]
+      },
+      "geometries": [
+        {
+          "type": "Point",
+          "coordinates": [
+            0,
+            0
+          ]
+        }
+      ],
+      "expected": {
+        "issues": [],
+        "participants": 1,
+        "coverage": "complete",
+        "state": "passed"
+      }
+    },
+    {
+      "name": "Rule-040-not-applicable",
+      "ruleId": "Rule-040",
+      "checkClass": "QgsGeometryTypeCheck",
+      "parameters": {
+        "allowedTypes": [
+          "Point"
+        ]
+      },
+      "geometries": [
+        {
+          "type": "GeometryCollection",
+          "geometries": [
+            {
+              "type": "Point",
+              "coordinates": [
+                0,
+                0
+              ]
+            }
+          ]
+        }
+      ],
+      "expected": {
+        "issues": [],
+        "participants": 0,
+        "coverage": "none",
+        "state": "skipped"
+      }
+    },
+    {
+      "name": "Rule-031-positive-boundary-{'minLength': 1}",
+      "ruleId": "Rule-031",
+      "checkClass": "QgsGeometrySegmentLengthCheck",
+      "parameters": {
+        "minLength": 1,
+        "toleranceDigits": 8
+      },
+      "geometries": [
+        {
+          "type": "LineString",
+          "coordinates": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              0
+            ],
+            [
+              1,
+              1
+            ]
+          ]
+        }
+      ],
+      "expected": {
+        "issues": [],
+        "participants": 1,
+        "coverage": "complete",
+        "state": "passed"
+      }
+    },
+    {
+      "name": "Rule-032-positive-boundary-{'minAngle': 90}",
+      "ruleId": "Rule-032",
+      "checkClass": "QgsGeometryAngleCheck",
+      "parameters": {
+        "minAngle": 90,
+        "toleranceDigits": 8
+      },
+      "geometries": [
+        {
+          "type": "LineString",
+          "coordinates": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              0
+            ],
+            [
+              1,
+              1
+            ]
+          ]
+        }
+      ],
+      "expected": {
+        "issues": [],
+        "participants": 1,
+        "coverage": "complete",
+        "state": "passed"
+      }
+    },
+    {
+      "name": "Rule-033-positive-boundary-{'minArea': 4}",
+      "ruleId": "Rule-033",
+      "checkClass": "QgsGeometryAreaCheck",
+      "parameters": {
+        "minArea": 4
+      },
+      "geometries": [
+        {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                2,
+                0
+              ],
+              [
+                2,
+                2
+              ],
+              [
+                0,
+                2
+              ],
+              [
+                0,
+                0
+              ]
+            ]
+          ]
+        }
+      ],
+      "expected": {
+        "issues": [],
+        "participants": 1,
+        "coverage": "complete",
+        "state": "passed"
+      }
+    },
+    {
+      "name": "Rule-034-positive-boundary-{'maxThinness': 10}",
+      "ruleId": "Rule-034",
+      "checkClass": "QgsGeometrySliverPolygonCheck",
+      "parameters": {
+        "maxThinness": 10,
+        "maxArea": 0
+      },
+      "geometries": [
+        {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                10,
+                0
+              ],
+              [
+                10,
+                1
+              ],
+              [
+                0,
+                1
+              ],
+              [
+                0,
+                0
+              ]
+            ]
+          ]
+        }
+      ],
+      "expected": {
+        "issues": [],
+        "participants": 1,
+        "coverage": "complete",
+        "state": "passed"
+      }
+    },
+    {
+      "name": "Rule-037-positive-boundary-{'maxArea': 8}",
+      "ruleId": "Rule-037",
+      "checkClass": "QgsGeometryOverlapCheck",
+      "parameters": {
+        "maxArea": 8,
+        "toleranceDigits": 8
+      },
+      "geometries": [
+        {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                4,
+                0
+              ],
+              [
+                4,
+                4
+              ],
+              [
+                0,
+                4
+              ],
+              [
+                0,
+                0
+              ]
+            ]
+          ]
+        },
+        {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                2,
+                0
+              ],
+              [
+                6,
+                0
+              ],
+              [
+                6,
+                4
+              ],
+              [
+                2,
+                4
+              ],
+              [
+                2,
+                0
+              ]
+            ]
+          ]
+        }
+      ],
+      "expected": {
+        "issues": [],
+        "participants": 2,
+        "coverage": "complete",
+        "state": "passed"
+      }
+    },
+    {
+      "name": "Rule-038-positive-boundary-{'maxArea': 36}",
+      "ruleId": "Rule-038",
+      "checkClass": "QgsGeometryGapCheck",
+      "parameters": {
+        "maxArea": 36,
+        "toleranceDigits": 8
+      },
+      "geometries": [
+        {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                10,
+                0
+              ],
+              [
+                10,
+                10
+              ],
+              [
+                0,
+                10
+              ],
+              [
+                0,
+                0
+              ]
+            ],
+            [
+              [
+                2,
+                2
+              ],
+              [
+                8,
+                2
+              ],
+              [
+                8,
+                8
+              ],
+              [
+                2,
+                8
+              ],
+              [
+                2,
+                2
+              ]
+            ]
+          ]
+        }
+      ],
+      "expected": {
+        "issues": [
+          {
+            "participants": [],
+            "location": {
+              "x": 5,
+              "y": 5
+            },
+            "occurrence": {
+              "sources": [],
+              "region": 0
+            },
+            "measurements": {
+              "area": 36,
+              "maxArea": 36
+            },
+            "geometry": {
+              "type": "Polygon",
+              "coordinates": [
+                [
+                  [
+                    2,
+                    2
+                  ],
+                  [
+                    8,
+                    2
+                  ],
+                  [
+                    8,
+                    8
+                  ],
+                  [
+                    2,
+                    8
+                  ],
+                  [
+                    2,
+                    2
+                  ]
+                ]
+              ]
+            }
+          }
+        ],
+        "participants": 1,
+        "coverage": "complete",
+        "state": "violated"
+      }
+    },
+    {
+      "name": "Rule-038-positive-boundary-{'maxArea': 35}",
+      "ruleId": "Rule-038",
+      "checkClass": "QgsGeometryGapCheck",
+      "parameters": {
+        "maxArea": 35,
+        "toleranceDigits": 8
+      },
+      "geometries": [
+        {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                10,
+                0
+              ],
+              [
+                10,
+                10
+              ],
+              [
+                0,
+                10
+              ],
+              [
+                0,
+                0
+              ]
+            ],
+            [
+              [
+                2,
+                2
+              ],
+              [
+                8,
+                2
+              ],
+              [
+                8,
+                8
+              ],
+              [
+                2,
+                8
+              ],
+              [
+                2,
+                2
+              ]
+            ]
+          ]
+        }
+      ],
+      "expected": {
+        "issues": [],
+        "participants": 1,
+        "coverage": "complete",
+        "state": "passed"
+      }
+    }
+  ]
+}

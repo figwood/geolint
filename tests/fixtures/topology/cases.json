@@ -1,0 +1,20 @@
+{
+  "geosVersion": "3.13.0",
+  "cases": [
+    {"name":"disjoint","geometries":[{"type":"Polygon","coordinates":[[[0,0],[2,0],[2,2],[0,2],[0,0]]]},{"type":"Polygon","coordinates":[[[5,0],[7,0],[7,2],[5,2],[5,0]]]}],"expected":{"participants":2,"coverage":"complete","comparisons":0,"equal":[],"area":[]}},
+    {"name":"edge-touch","geometries":[{"type":"Polygon","coordinates":[[[0,0],[2,0],[2,2],[0,2],[0,0]]]},{"type":"Polygon","coordinates":[[[2,0],[4,0],[4,2],[2,2],[2,0]]]}],"expected":{"participants":2,"coverage":"complete","comparisons":1,"equal":[],"area":[]}},
+    {"name":"point-touch","geometries":[{"type":"Polygon","coordinates":[[[0,0],[2,0],[2,2],[0,2],[0,0]]]},{"type":"Polygon","coordinates":[[[2,2],[4,2],[4,4],[2,4],[2,2]]]}],"expected":{"participants":2,"coverage":"complete","comparisons":1,"equal":[],"area":[]}},
+    {"name":"overlap","geometries":[{"type":"Polygon","coordinates":[[[0,0],[2,0],[2,2],[0,2],[0,0]]]},{"type":"Polygon","coordinates":[[[1,0],[3,0],[3,2],[1,2],[1,0]]]}],"expected":{"participants":2,"coverage":"complete","comparisons":1,"equal":[],"area":[[0,1]]}},
+    {"name":"contains","geometries":[{"type":"Polygon","coordinates":[[[0,0],[4,0],[4,4],[0,4],[0,0]]]},{"type":"Polygon","coordinates":[[[1,1],[2,1],[2,2],[1,2],[1,1]]]}],"expected":{"participants":2,"coverage":"complete","comparisons":1,"equal":[],"area":[[0,1]]}},
+    {"name":"equal-duplicate-id","geometries":[{"type":"Polygon","coordinates":[[[0,0],[2,0],[2,2],[0,2],[0,0]]]},{"type":"Polygon","coordinates":[[[0,0],[2,0],[2,2],[0,2],[0,0]]]}],"expected":{"participants":2,"coverage":"complete","comparisons":1,"equal":[[0,1]],"area":[[0,1]]}},
+    {"name":"reverse-ring","geometries":[{"type":"Polygon","coordinates":[[[0,0],[2,0],[2,2],[0,2],[0,0]]]},{"type":"Polygon","coordinates":[[[0,0],[0,2],[2,2],[2,0],[0,0]]]}],"expected":{"participants":2,"coverage":"complete","comparisons":1,"equal":[[0,1]],"area":[[0,1]]}},
+    {"name":"different-start","geometries":[{"type":"Polygon","coordinates":[[[0,0],[2,0],[2,2],[0,2],[0,0]]]},{"type":"Polygon","coordinates":[[[2,2],[0,2],[0,0],[2,0],[2,2]]]}],"expected":{"participants":2,"coverage":"complete","comparisons":1,"equal":[[0,1]],"area":[[0,1]]}},
+    {"name":"multipart","geometries":[{"type":"MultiPolygon","coordinates":[[[[0,0],[2,0],[2,2],[0,2],[0,0]]],[[[5,0],[7,0],[7,2],[5,2],[5,0]]]]},{"type":"Polygon","coordinates":[[[6,0],[8,0],[8,2],[6,2],[6,0]]]}],"expected":{"participants":2,"coverage":"complete","comparisons":1,"equal":[],"area":[[0,1]]}},
+    {"name":"inside-hole","geometries":[{"type":"Polygon","coordinates":[[[0,0],[6,0],[6,6],[0,6],[0,0]],[[1,1],[1,5],[5,5],[5,1],[1,1]]]},{"type":"Polygon","coordinates":[[[2,2],[4,2],[4,4],[2,4],[2,2]]]}],"expected":{"participants":2,"coverage":"complete","comparisons":1,"equal":[],"area":[]}},
+    {"name":"invalid-excluded","geometries":[{"type":"Polygon","coordinates":[[[0,0],[2,0],[2,2],[0,2],[0,0]]]},{"type":"Polygon","coordinates":[[[0,0],[2,2],[0,2],[2,0],[0,0]]]}],"expected":{"participants":1,"coverage":"partial","comparisons":0,"equal":[],"area":[]}},
+    {"name":"null-excluded","geometries":[{"type":"Polygon","coordinates":[[[0,0],[2,0],[2,2],[0,2],[0,0]]]},null],"expected":{"participants":1,"coverage":"partial","comparisons":0,"equal":[],"area":[]}},
+    {"name":"single","geometries":[{"type":"Polygon","coordinates":[[[0,0],[2,0],[2,2],[0,2],[0,0]]]}],"expected":{"participants":1,"coverage":"complete","comparisons":0,"equal":[],"area":[]}},
+    {"name":"no-applicable","geometries":[{"type":"GeometryCollection","geometries":[{"type":"Point","coordinates":[0,0]}]}],"expected":{"participants":0,"coverage":"none","comparisons":0,"equal":[],"area":[]}},
+    {"name":"empty-dataset","geometries":[],"expected":{"participants":0,"coverage":"none","comparisons":0,"equal":[],"area":[]}}
+  ]
+}

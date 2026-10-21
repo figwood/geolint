@@ -1,0 +1,42 @@
+name: Validate
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  core-and-browser:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '24'
+          cache: npm
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.12'
+      - run: npm ci
+      - run: npm test
+      - run: npm run typecheck
+      - run: npm run build
+      - run: npm run test:engine
+      - run: npx playwright install --with-deps chromium
+      - run: npm run test:e2e
+      - name: Keep browser screenshots and test artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: browser-artifacts
+          path: |
+            .cache/*.png
+            test-results/
+          if-no-files-found: ignore
+          retention-days: 14

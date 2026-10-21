@@ -1,0 +1,33 @@
+# Dependencies and generated builds
+node_modules/
+dist/
+*.tsbuildinfo
+
+# Local GEOS builds, downloaded sources, and generated baselines
+.cache/
+
+# Test artifacts
+test-results/
+playwright-report/
+coverage/
+
+# Local tooling
+.superpowers/
+
+# Python bytecode and virtual environments
+*.py[cod]
+__pycache__/
+.venv/
+venv/
+
+# Local configuration and credentials
+.env
+.env.*
+!.env.example
+
+# Logs and operating system files
+*.log
+.DS_Store
+Thumbs.db
+AGENTS.md
+docs

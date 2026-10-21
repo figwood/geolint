@@ -1,0 +1,677 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "id": "valid-square",
+      "properties": {},
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              0,
+              0
+            ],
+            [
+              4,
+              0
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              0,
+              4
+            ],
+            [
+              0,
+              0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "bow-tie",
+      "properties": {},
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              0,
+              0
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              0,
+              4
+            ],
+            [
+              4,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "hole-outside-shell",
+      "properties": {},
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              0,
+              0
+            ],
+            [
+              4,
+              0
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              0,
+              4
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          [
+            [
+              5,
+              5
+            ],
+            [
+              6,
+              5
+            ],
+            [
+              6,
+              6
+            ],
+            [
+              5,
+              6
+            ],
+            [
+              5,
+              5
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "crossing-holes",
+      "properties": {},
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              0,
+              0
+            ],
+            [
+              10,
+              0
+            ],
+            [
+              10,
+              10
+            ],
+            [
+              0,
+              10
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          [
+            [
+              1,
+              1
+            ],
+            [
+              6,
+              1
+            ],
+            [
+              6,
+              6
+            ],
+            [
+              1,
+              6
+            ],
+            [
+              1,
+              1
+            ]
+          ],
+          [
+            [
+              4,
+              4
+            ],
+            [
+              8,
+              4
+            ],
+            [
+              8,
+              8
+            ],
+            [
+              4,
+              8
+            ],
+            [
+              4,
+              4
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "repeated-vertex-valid",
+      "properties": {},
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              0,
+              0
+            ],
+            [
+              4,
+              0
+            ],
+            [
+              4,
+              0
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              0,
+              4
+            ],
+            [
+              0,
+              0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "degenerate-ring",
+      "properties": {},
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              0
+            ],
+            [
+              2,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "valid-multipolygon",
+      "properties": {},
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                2,
+                0
+              ],
+              [
+                2,
+                2
+              ],
+              [
+                0,
+                2
+              ],
+              [
+                0,
+                0
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                3,
+                0
+              ],
+              [
+                5,
+                0
+              ],
+              [
+                5,
+                2
+              ],
+              [
+                3,
+                2
+              ],
+              [
+                3,
+                0
+              ]
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "overlapping-multipolygon",
+      "properties": {},
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                4,
+                0
+              ],
+              [
+                4,
+                4
+              ],
+              [
+                0,
+                4
+              ],
+              [
+                0,
+                0
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                2,
+                2
+              ],
+              [
+                6,
+                2
+              ],
+              [
+                6,
+                6
+              ],
+              [
+                2,
+                6
+              ],
+              [
+                2,
+                2
+              ]
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "valid-point",
+      "properties": {},
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -500000.125,
+          3000000.0625
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "repeated-multipoint-valid",
+      "properties": {},
+      "geometry": {
+        "type": "MultiPoint",
+        "coordinates": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            2,
+            3
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "crossing-line-valid",
+      "properties": {},
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            0,
+            0
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            0,
+            4
+          ],
+          [
+            4,
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "valid-multiline",
+      "properties": {},
+      "geometry": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              0,
+              0
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              0,
+              4
+            ],
+            [
+              4,
+              0
+            ]
+          ],
+          [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              1
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "degenerate-line",
+      "properties": {},
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            1,
+            2
+          ],
+          [
+            1,
+            2
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "degenerate-multiline",
+      "properties": {},
+      "geometry": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              0,
+              0
+            ],
+            [
+              4,
+              4
+            ],
+            [
+              0,
+              4
+            ],
+            [
+              4,
+              0
+            ]
+          ],
+          [
+            [
+              1,
+              2
+            ],
+            [
+              1,
+              2
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "valid-nested-collection",
+      "properties": {},
+      "geometry": {
+        "type": "GeometryCollection",
+        "geometries": [
+          {
+            "type": "Point",
+            "coordinates": [
+              -500000.125,
+              3000000.0625
+            ]
+          },
+          {
+            "type": "GeometryCollection",
+            "geometries": [
+              {
+                "type": "LineString",
+                "coordinates": [
+                  [
+                    0,
+                    0
+                  ],
+                  [
+                    4,
+                    4
+                  ],
+                  [
+                    0,
+                    4
+                  ],
+                  [
+                    4,
+                    0
+                  ]
+                ]
+              },
+              {
+                "type": "Polygon",
+                "coordinates": [
+                  [
+                    [
+                      0,
+                      0
+                    ],
+                    [
+                      4,
+                      0
+                    ],
+                    [
+                      4,
+                      4
+                    ],
+                    [
+                      0,
+                      4
+                    ],
+                    [
+                      0,
+                      0
+                    ]
+                  ]
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "invalid-collection-member",
+      "properties": {},
+      "geometry": {
+        "type": "GeometryCollection",
+        "geometries": [
+          {
+            "type": "Point",
+            "coordinates": [
+              -500000.125,
+              3000000.0625
+            ]
+          },
+          {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  0,
+                  0
+                ],
+                [
+                  4,
+                  4
+                ],
+                [
+                  0,
+                  4
+                ],
+                [
+                  4,
+                  0
+                ],
+                [
+                  0,
+                  0
+                ]
+              ]
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "GeometryCollection",
+        "geometries": []
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0,
+          0,
+          1
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            0,
+            0
+          ]
+        ]
+      }
+    }
+  ]
+}

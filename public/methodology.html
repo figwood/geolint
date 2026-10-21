@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>How it works — GeoLint</title>
+<meta name="description" content="How GeoLint works is explained on the About page.">
+<link rel="icon" type="image/png" sizes="32x32" href="./favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
+<link rel="stylesheet" href="./styles.css">
+<meta name="robots" content="noindex"><meta http-equiv="refresh" content="0; url=./about.html#method">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header><a class="brand" href="./"><img src="./site-icon-512.png" alt="" width="44" height="44"><span class="brand-copy"><span>GeoLint</span><span class="environment-badge" hidden>Preview</span><span>Geometry Inspector</span></span></a><nav aria-label="Main navigation"><a href="./help.html">Help</a><a href="./rules.html">Rules</a><a href="./about.html">About</a></nav></header>
+<main id="main"><article><h1>How it works</h1><p>Read <a href="./about.html#method">How it works</a> on the About page.</p><section id="qgis-checks" class="panel"><h2>QGIS Geometry Checker rules</h2><p>Rule-024 through Rule-040 add all checks requiring only one input layer. Node checks run on safe normalized 2D geometry; relationship overlays require valid geometries. Short ring evidence can produce a Rule-027 event while the core record remains parse_failed. GEOS validity and additional simplicity constraints are independent.</p><p>Precision is applied to working GEOS coordinates for the relevant QGIS checks. Original inputs are not repaired or reprojected. Multiple events per feature, feature pair or line-part pair retain distinct source paths. Independent PyQGIS algorithm comparisons record their actual versions; they do not establish GUI plugin error-row parity.</p></section></article></main>
+</body></html>
