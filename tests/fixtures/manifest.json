@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "1.0",
+  "source": "Self-authored synthetic geometries for geolint; no employer or external dataset used.",
+  "license": "CC0-1.0",
+  "semantics": "planar-2d",
+  "validityFlags": 0,
+  "intendedReferenceVersion": "3.13.0",
+  "cases": [
+    {"name":"valid-square","expectedValid":true,"geometry":{"type":"Polygon","coordinates":[[[0,0],[4,0],[4,4],[0,4],[0,0]]]}},
+    {"name":"bow-tie","expectedValid":false,"allowedErrorLocations":[[2,2]],"geometry":{"type":"Polygon","coordinates":[[[0,0],[4,4],[0,4],[4,0],[0,0]]]}},
+    {"name":"hole-outside-shell","expectedValid":false,"allowedErrorLocations":[[5,5],[6,5],[6,6],[5,6]],"geometry":{"type":"Polygon","coordinates":[[[0,0],[4,0],[4,4],[0,4],[0,0]],[[5,5],[6,5],[6,6],[5,6],[5,5]]]}},
+    {"name":"crossing-holes","expectedValid":false,"allowedErrorLocations":[[4,6],[6,4]],"geometry":{"type":"Polygon","coordinates":[[[0,0],[10,0],[10,10],[0,10],[0,0]],[[1,1],[6,1],[6,6],[1,6],[1,1]],[[4,4],[8,4],[8,8],[4,8],[4,4]]]}},
+    {"name":"repeated-vertex-valid","expectedValid":true,"geometry":{"type":"Polygon","coordinates":[[[0,0],[4,0],[4,0],[4,4],[0,4],[0,0]]]}},
+    {"name":"degenerate-ring","expectedValid":false,"allowedErrorLocations":[[0,0],[1,0],[2,0]],"geometry":{"type":"Polygon","coordinates":[[[0,0],[1,0],[2,0],[0,0]]]}},
+    {"name":"valid-multipolygon","expectedValid":true,"geometry":{"type":"MultiPolygon","coordinates":[[[[0,0],[2,0],[2,2],[0,2],[0,0]]],[[[3,0],[5,0],[5,2],[3,2],[3,0]]]]}},
+    {"name":"overlapping-multipolygon","expectedValid":false,"allowedErrorLocations":[[2,4],[4,2]],"geometry":{"type":"MultiPolygon","coordinates":[[[[0,0],[4,0],[4,4],[0,4],[0,0]]],[[[2,2],[6,2],[6,6],[2,6],[2,2]]]]}},
+    {"name":"valid-point","expectedValid":true,"geometry":{"type":"Point","coordinates":[-500000.125,3000000.0625]}},
+    {"name":"repeated-multipoint-valid","expectedValid":true,"geometry":{"type":"MultiPoint","coordinates":[[0,0],[0,0],[2,3]]}},
+    {"name":"crossing-line-valid","expectedValid":true,"geometry":{"type":"LineString","coordinates":[[0,0],[4,4],[0,4],[4,0]]}},
+    {"name":"valid-multiline","expectedValid":true,"geometry":{"type":"MultiLineString","coordinates":[[[0,0],[4,4],[0,4],[4,0]],[[0,0],[1,1]]]}},
+    {"name":"degenerate-line","expectedValid":false,"geometry":{"type":"LineString","coordinates":[[1,2],[1,2]]},"allowedErrorLocations":[[1,2]]},
+    {"name":"degenerate-multiline","expectedValid":false,"geometry":{"type":"MultiLineString","coordinates":[[[0,0],[4,4],[0,4],[4,0]],[[1,2],[1,2]]]},"allowedErrorLocations":[[1,2]]},
+    {"name":"valid-nested-collection","expectedValid":true,"geometry":{"type":"GeometryCollection","geometries":[{"type":"Point","coordinates":[-500000.125,3000000.0625]},{"type":"GeometryCollection","geometries":[{"type":"LineString","coordinates":[[0,0],[4,4],[0,4],[4,0]]},{"type":"Polygon","coordinates":[[[0,0],[4,0],[4,4],[0,4],[0,0]]]}]}]}},
+    {"name":"invalid-collection-member","expectedValid":false,"geometry":{"type":"GeometryCollection","geometries":[{"type":"Point","coordinates":[-500000.125,3000000.0625]},{"type":"Polygon","coordinates":[[[0,0],[4,4],[0,4],[4,0],[0,0]]]}]},"allowedErrorLocations":[[2,2]]}
+  ]
+}

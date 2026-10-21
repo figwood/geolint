@@ -1,0 +1,870 @@
+{
+  "description": "Inventory of the current sample files, with counts measured using the real GEOS WASM engine and the specified configuration.",
+  "issueCounting": "Count record diagnostics, attribute issues, identity issues and topology findings by built-in rule. Count file or configuration rejection once. A diagnostic can belong to multiple rules. These observations describe fixtures; independent hand-authored validation cases remain the correctness reference.",
+  "entries": [
+    {
+      "file": "Rule-001.geojson",
+      "ruleId": "Rule-001",
+      "title": "File format and size must be supported",
+      "applicable": true,
+      "expectedIssueCount": 0,
+      "attributeRules": ".config/geometry-only-attributes.json",
+      "topologyRules": [],
+      "note": "Supported valid GeoJSON; no product byte-size limit or file rejection is expected. This file produces no finding for the named rule; it is a non-triggering control, not evidence of positive detection coverage.",
+      "observedIssueCounts": {},
+      "expectedRunStatus": "completed",
+      "fileBytes": 12670
+    },
+    {
+      "file": "Rule-002.geojson",
+      "ruleId": "Rule-002",
+      "title": "GeoJSON documents and features must be well formed",
+      "applicable": true,
+      "expectedIssueCount": 0,
+      "attributeRules": ".config/geometry-only-attributes.json",
+      "topologyRules": [],
+      "note": "Counts describe the current file and selected configuration, measured with GEOS WASM 3.13.0. This file produces no finding for the named rule; it is a non-triggering control, not evidence of positive detection coverage.",
+      "observedIssueCounts": {
+        "Rule-005": 3,
+        "Rule-007": 3,
+        "Rule-010": 3,
+        "Rule-008": 3
+      },
+      "expectedRunStatus": "completed",
+      "fileBytes": 12305
+    },
+    {
+      "file": "Rule-003.geojson",
+      "ruleId": "Rule-003",
+      "title": "Shapefile headers and records must be well formed",
+      "applicable": false,
+      "expectedIssueCount": 0,
+      "attributeRules": ".config/geometry-only-attributes.json",
+      "topologyRules": [],
+      "note": "GeoJSON does not exercise this Shapefile or archive rule; this is a valid control input. This file produces no finding for the named rule; it is a non-triggering control, not evidence of positive detection coverage.",
+      "observedIssueCounts": {},
+      "expectedRunStatus": "completed",
+      "fileBytes": 12670
+    },
+    {
+      "file": "Rule-003.shp",
+      "ruleId": "Rule-003",
+      "title": "Shapefile headers and records must be well formed",
+      "applicable": true,
+      "expectedIssueCount": 0,
+      "attributeRules": ".config/geometry-only-attributes.json",
+      "topologyRules": [],
+      "note": "Counts describe the current file and selected configuration, measured with GEOS WASM 3.13.0. This file produces no finding for the named rule; it is a non-triggering control, not evidence of positive detection coverage.",
+      "observedIssueCounts": {},
+      "expectedRunStatus": "completed",
+      "fileBytes": 1500
+    },
+    {
+      "file": "Rule-004.geojson",
+      "ruleId": "Rule-004",
+      "title": "ZIP archives must contain one valid layer",
+      "applicable": false,
+      "expectedIssueCount": 0,
+      "attributeRules": ".config/geometry-only-attributes.json",
+      "topologyRules": [],
+      "note": "GeoJSON does not exercise this Shapefile or archive rule; this is a valid control input. This file produces no finding for the named rule; it is a non-triggering control, not evidence of positive detection coverage.",
+      "observedIssueCounts": {},
+      "expectedRunStatus": "completed",
+      "fileBytes": 12670
+    },
+    {
+      "file": "Rule-004.zip",
+      "ruleId": "Rule-004",
+      "title": "ZIP archives must contain one valid layer",
+      "applicable": true,
+      "expectedIssueCount": 0,
+      "attributeRules": ".config/geometry-only-attributes.json",
+      "topologyRules": [],
+      "note": "Counts describe the current file and selected configuration, measured with GEOS WASM 3.13.0. This file produces no finding for the named rule; it is a non-triggering control, not evidence of positive detection coverage.",
+      "observedIssueCounts": {},
+      "expectedRunStatus": "completed",
+      "fileBytes": 1524
+    },
+    {
+      "file": "Rule-005.geojson",
+      "ruleId": "Rule-005",
+      "title": "Geometry structures and coordinates must be valid",
+      "applicable": true,
+      "expectedIssueCount": 1,
+      "attributeRules": ".config/geometry-only-attributes.json",
+      "topologyRules": [],
+      "note": "Counts describe the current file and selected configuration, measured with GEOS WASM 3.13.0.",
+      "observedIssueCounts": {
+        "Rule-005": 1,
+        "Rule-007": 1,
+        "Rule-010": 1
+      },
+      "expectedRunStatus": "completed",
+      "fileBytes": 13175
+    },
+    {
+      "file": "Rule-006.geojson",
+      "ruleId": "Rule-006",
+      "title": "Polygon rings must close",
+      "applicable": true,
+      "expectedIssueCount": 6,
+      "attributeRules": ".config/geometry-only-attributes.json",
+      "topologyRules": [],
+      "note": "Counts describe the current file and selected configuration, measured with GEOS WASM 3.13.0.",
+      "observedIssueCounts": {
+        "Rule-006": 6
+      },
+      "expectedRunStatus": "completed",
+      "fileBytes": 14156
+    },
+    {
+      "file": "Rule-007.geojson",
+      "ruleId": "Rule-007",
+      "title": "Coordinates must be two-dimensional",
+      "applicable": true,
+      "expectedIssueCount": 6,
+      "attributeRules": ".config/geometry-only-attributes.json",
+      "topologyRules": [],
+      "note": "Counts describe the current file and selected configuration, measured with GEOS WASM 3.13.0.",
+      "observedIssueCounts": {
+        "Rule-007": 6
+      },
+      "expectedRunStatus": "completed",
+      "fileBytes": 12752
+    },
+    {
+      "file": "Rule-008.geojson",
+      "ruleId": "Rule-008",
+      "title": "Geometries must not be empty",
+      "applicable": true,
+      "expectedIssueCount": 6,
+      "attributeRules": ".config/geometry-only-attributes.json",
+      "topologyRules": [],
+      "note": "Counts describe the current file and selected configuration, measured with GEOS WASM 3.13.0.",
+      "observedIssueCounts": {
+        "Rule-008": 6
+      },
+      "expectedRunStatus": "completed",
+      "fileBytes": 12311
+    },
+    {
+      "file": "Rule-009.geojson",
+      "ruleId": "Rule-009",
+      "title": "Shapefile record geometries must be well formed",
+      "applicable": false,
+      "expectedIssueCount": 0,
+      "attributeRules": ".config/geometry-only-attributes.json",
+      "topologyRules": [],
+      "note": "GeoJSON does not exercise this Shapefile or archive rule; this is a valid control input. This file produces no finding for the named rule; it is a non-triggering control, not evidence of positive detection coverage.",
+      "observedIssueCounts": {},
+      "expectedRunStatus": "completed",
+      "fileBytes": 12670
+    },
+    {
+      "file": "Rule-010.geojson",
+      "ruleId": "Rule-010",
+      "title": "Geometry types must be supported",
+      "applicable": true,
+      "expectedIssueCount": 6,
+      "attributeRules": ".config/geometry-only-attributes.json",
+      "topologyRules": [],
+      "note": "Counts describe the current file and selected configuration, measured with GEOS WASM 3.13.0.",
+      "observedIssueCounts": {
+        "Rule-005": 6,
+        "Rule-007": 6,
+        "Rule-010": 6
+      },
+      "expectedRunStatus": "completed",
+      "fileBytes": 13214
+    },
+    {
+      "file": "Rule-011.geojson",
+      "ruleId": "Rule-011",
+      "title": "Must not have invalid geometries",
+      "applicable": true,
+      "expectedIssueCount": 6,
+      "attributeRules": ".config/geometry-only-attributes.json",
+      "topologyRules": [],
+      "note": "Counts describe the current file and selected configuration, measured with GEOS WASM 3.13.0.",
+      "observedIssueCounts": {
+        "Rule-011": 6
+      },
+      "expectedRunStatus": "completed",
+      "fileBytes": 14528
+    },
+    {
+      "file": "Rule-012.geojson",
+      "ruleId": "Rule-012",
+      "title": "Must not have duplicates",
+      "applicable": true,
+      "expectedIssueCount": 21,
+      "attributeRules": ".config/geometry-only-attributes.json",
+      "topologyRules": [
+        "Rule-012"
+      ],
+      "note": "Counts describe the current file and selected configuration, measured with GEOS WASM 3.13.0.",
+      "observedIssueCounts": {
+        "Rule-012": 21
+      },
+      "expectedRunStatus": "completed",
+      "fileBytes": 12667
+    },
+    {
+      "file": "Rule-013.geojson",
+      "ruleId": "Rule-013",
+      "title": "Must not have multi-part geometries",
+      "applicable": true,
+      "expectedIssueCount": 6,
+      "attributeRules": ".config/geometry-only-attributes.json",
+      "topologyRules": [
+        "Rule-013"
+      ],
+      "note": "Counts describe the current file and selected configuration, measured with GEOS WASM 3.13.0.",
+      "observedIssueCounts": {
+        "Rule-013": 6
+      },
+      "expectedRunStatus": "completed",
+      "fileBytes": 13190
+    },
+    {
+      "file": "Rule-014.geojson",
+      "ruleId": "Rule-014",
+      "title": "Must not have dangles",
+      "applicable": true,
+      "expectedIssueCount": 12,
+      "attributeRules": ".config/geometry-only-attributes.json",
+      "topologyRules": [
+        "Rule-014"
+      ],
+      "note": "Counts describe the current file and selected configuration, measured with GEOS WASM 3.13.0.",
+      "observedIssueCounts": {
+        "Rule-014": 12
+      },
+      "expectedRunStatus": "completed",
+      "fileBytes": 13195
+    },
+    {
+      "file": "Rule-015.geojson",
+      "ruleId": "Rule-015",
+      "title": "Must not have pseudos",
+      "applicable": true,
+      "expectedIssueCount": 6,
+      "attributeRules": ".config/geometry-only-attributes.json",
+      "topologyRules": [
+        "Rule-015"
+      ],
+      "note": "Counts describe the current file and selected configuration, measured with GEOS WASM 3.13.0.",
+      "observedIssueCounts": {
+        "Rule-015": 6
+      },
+      "expectedRunStatus": "completed",
+      "fileBytes": 13521
+    },
+    {
+      "file": "Rule-016.geojson",
+      "ruleId": "Rule-016",
+      "title": "Must not overlap",
+      "applicable": true,
+      "expectedIssueCount": 9,
+      "attributeRules": ".config/geometry-only-attributes.json",
+      "topologyRules": [
+        "Rule-016"
+      ],
+      "note": "Counts describe the current file and selected configuration, measured with GEOS WASM 3.13.0.",
+      "observedIssueCounts": {
+        "Rule-016": 9
+      },
+      "expectedRunStatus": "completed",
+      "fileBytes": 14528
+    },
+    {
+      "file": "Rule-017.geojson",
+      "ruleId": "Rule-017",
+      "title": "Must not have gaps",
+      "applicable": true,
+      "expectedIssueCount": 0,
+      "attributeRules": ".config/geometry-only-attributes.json",
+      "topologyRules": [
+        "Rule-017"
+      ],
+      "note": "Counts describe the current file and selected configuration, measured with GEOS WASM 3.13.0. This file produces no finding for the named rule; it is a non-triggering control, not evidence of positive detection coverage.",
+      "observedIssueCounts": {},
+      "expectedRunStatus": "completed",
+      "fileBytes": 14545
+    },
+    {
+      "file": "Rule-018.geojson",
+      "ruleId": "Rule-018",
+      "title": "Required attribute values must be present",
+      "applicable": true,
+      "expectedIssueCount": 6,
+      "attributeRules": ".config/attribute-rules.json",
+      "topologyRules": [],
+      "note": "Counts describe the current file and selected configuration, measured with GEOS WASM 3.13.0.",
+      "observedIssueCounts": {
+        "Rule-018": 6,
+        "Rule-020": 39
+      },
+      "expectedRunStatus": "completed",
+      "fileBytes": 12688
+    },
+    {
+      "file": "Rule-019.geojson",
+      "ruleId": "Rule-019",
+      "title": "Attribute values must match their types",
+      "applicable": true,
+      "expectedIssueCount": 6,
+      "attributeRules": ".config/attribute-rules.json",
+      "topologyRules": [],
+      "note": "Counts describe the current file and selected configuration, measured with GEOS WASM 3.13.0.",
+      "observedIssueCounts": {
+        "Rule-019": 6,
+        "Rule-020": 39
+      },
+      "expectedRunStatus": "completed",
+      "fileBytes": 12736
+    },
+    {
+      "file": "Rule-020.geojson",
+      "ruleId": "Rule-020",
+      "title": "Attribute values must satisfy their constraints",
+      "applicable": true,
+      "expectedIssueCount": 45,
+      "attributeRules": ".config/attribute-rules.json",
+      "topologyRules": [],
+      "note": "Counts describe the current file and selected configuration, measured with GEOS WASM 3.13.0.",
+      "observedIssueCounts": {
+        "Rule-020": 45
+      },
+      "expectedRunStatus": "completed",
+      "fileBytes": 12676
+    },
+    {
+      "file": "Rule-021.geojson",
+      "ruleId": "Rule-021",
+      "title": "Attribute sources must be readable",
+      "applicable": true,
+      "expectedIssueCount": 0,
+      "attributeRules": ".config/attribute-rules.json",
+      "topologyRules": [],
+      "note": "Counts describe the current file and selected configuration, measured with GEOS WASM 3.13.0. This file produces no finding for the named rule; it is a non-triggering control, not evidence of positive detection coverage.",
+      "observedIssueCounts": {
+        "Rule-018": 6,
+        "Rule-020": 39
+      },
+      "expectedRunStatus": "completed",
+      "fileBytes": 12376
+    },
+    {
+      "file": "Rule-022.geojson",
+      "ruleId": "Rule-022",
+      "title": "Attribute rule configurations must be valid",
+      "applicable": true,
+      "expectedIssueCount": 1,
+      "attributeRules": ".config/AR-005.rules.json",
+      "topologyRules": [],
+      "note": "The GeoJSON is valid; the companion attribute configuration contains unsupported types and is rejected before inspection.",
+      "observedIssueCounts": {
+        "Rule-022": 1
+      },
+      "expectedRunStatus": "failed",
+      "expectedFailureCode": "ATTRIBUTE_CONFIG_ERROR",
+      "fileBytes": 12670
+    },
+    {
+      "file": "Rule-023.geojson",
+      "ruleId": "Rule-023",
+      "title": "Feature IDs must be valid",
+      "applicable": true,
+      "expectedIssueCount": 6,
+      "attributeRules": ".config/attribute-rules.json",
+      "topologyRules": [],
+      "note": "Counts describe the current file and selected configuration, measured with GEOS WASM 3.13.0.",
+      "observedIssueCounts": {
+        "Rule-023": 6,
+        "Rule-020": 39
+      },
+      "expectedRunStatus": "completed",
+      "fileBytes": 12862
+    },
+    {
+      "file": "Rule-024.geojson",
+      "ruleId": "Rule-024",
+      "title": "Must not self-intersect",
+      "applicable": true,
+      "expectedIssueCount": 6,
+      "attributeRules": ".config/geometry-only-attributes.json",
+      "topologyRules": [
+        "Rule-024"
+      ],
+      "topologyConfig": ".config/Rule-024.rules.json",
+      "topologyOptions": {
+        "rules": [
+          {
+            "id": "Rule-024",
+            "parameters": {
+              "toleranceDigits": 8
+            }
+          }
+        ]
+      },
+      "note": "Counts describe the current file and selected configuration, measured with GEOS WASM 3.13.0.",
+      "observedIssueCounts": {
+        "Rule-024": 6
+      },
+      "expectedRunStatus": "completed",
+      "fileBytes": 13852
+    },
+    {
+      "file": "Rule-025.geojson",
+      "ruleId": "Rule-025",
+      "title": "Must not have duplicate nodes",
+      "applicable": true,
+      "expectedIssueCount": 6,
+      "attributeRules": ".config/geometry-only-attributes.json",
+      "topologyRules": [
+        "Rule-025"
+      ],
+      "topologyConfig": ".config/Rule-025.rules.json",
+      "topologyOptions": {
+        "rules": [
+          {
+            "id": "Rule-025",
+            "parameters": {
+              "toleranceDigits": 8
+            }
+          }
+        ]
+      },
+      "note": "Counts describe the current file and selected configuration, measured with GEOS WASM 3.13.0.",
+      "observedIssueCounts": {
+        "Rule-025": 6
+      },
+      "expectedRunStatus": "completed",
+      "fileBytes": 13838
+    },
+    {
+      "file": "Rule-026.geojson",
+      "ruleId": "Rule-026",
+      "title": "Must not self-contact",
+      "applicable": true,
+      "expectedIssueCount": 0,
+      "attributeRules": ".config/geometry-only-attributes.json",
+      "topologyRules": [
+        "Rule-026"
+      ],
+      "topologyConfig": ".config/Rule-026.rules.json",
+      "topologyOptions": {
+        "rules": [
+          {
+            "id": "Rule-026",
+            "parameters": {
+              "toleranceDigits": 8
+            }
+          }
+        ]
+      },
+      "note": "Counts describe the current file and selected configuration, measured with GEOS WASM 3.13.0. This file produces no finding for the named rule; it is a non-triggering control, not evidence of positive detection coverage.",
+      "observedIssueCounts": {},
+      "expectedRunStatus": "completed",
+      "fileBytes": 13838
+    },
+    {
+      "file": "Rule-027.geojson",
+      "ruleId": "Rule-027",
+      "title": "Polygon rings must have at least three nodes",
+      "applicable": true,
+      "expectedIssueCount": 6,
+      "attributeRules": ".config/geometry-only-attributes.json",
+      "topologyRules": [
+        "Rule-027"
+      ],
+      "topologyConfig": ".config/Rule-027.rules.json",
+      "topologyOptions": {
+        "rules": [
+          {
+            "id": "Rule-027",
+            "parameters": {}
+          }
+        ]
+      },
+      "note": "Counts describe the current file and selected configuration, measured with GEOS WASM 3.13.0.",
+      "observedIssueCounts": {
+        "Rule-006": 6,
+        "Rule-027": 6
+      },
+      "expectedRunStatus": "completed",
+      "fileBytes": 13784
+    },
+    {
+      "file": "Rule-028.geojson",
+      "ruleId": "Rule-028",
+      "title": "Polygons must not have holes",
+      "applicable": true,
+      "expectedIssueCount": 6,
+      "attributeRules": ".config/geometry-only-attributes.json",
+      "topologyRules": [
+        "Rule-028"
+      ],
+      "topologyConfig": ".config/Rule-028.rules.json",
+      "topologyOptions": {
+        "rules": [
+          {
+            "id": "Rule-028",
+            "parameters": {}
+          }
+        ]
+      },
+      "note": "Counts describe the current file and selected configuration, measured with GEOS WASM 3.13.0.",
+      "observedIssueCounts": {
+        "Rule-028": 6
+      },
+      "expectedRunStatus": "completed",
+      "fileBytes": 16676
+    },
+    {
+      "file": "Rule-029.geojson",
+      "ruleId": "Rule-029",
+      "title": "Multipart geometries must contain more than one part",
+      "applicable": true,
+      "expectedIssueCount": 6,
+      "attributeRules": ".config/geometry-only-attributes.json",
+      "topologyRules": [
+        "Rule-029"
+      ],
+      "topologyConfig": ".config/Rule-029.rules.json",
+      "topologyOptions": {
+        "rules": [
+          {
+            "id": "Rule-029",
+            "parameters": {}
+          }
+        ]
+      },
+      "note": "Counts describe the current file and selected configuration, measured with GEOS WASM 3.13.0.",
+      "observedIssueCounts": {
+        "Rule-029": 6
+      },
+      "expectedRunStatus": "completed",
+      "fileBytes": 13460
+    },
+    {
+      "file": "Rule-030.geojson",
+      "ruleId": "Rule-030",
+      "title": "Lines must not have dangles (Geometry Checker)",
+      "applicable": true,
+      "expectedIssueCount": 12,
+      "attributeRules": ".config/geometry-only-attributes.json",
+      "topologyRules": [
+        "Rule-030"
+      ],
+      "topologyConfig": ".config/Rule-030.rules.json",
+      "topologyOptions": {
+        "rules": [
+          {
+            "id": "Rule-030",
+            "parameters": {
+              "toleranceDigits": 8
+            }
+          }
+        ]
+      },
+      "note": "Counts describe the current file and selected configuration, measured with GEOS WASM 3.13.0.",
+      "observedIssueCounts": {
+        "Rule-030": 12
+      },
+      "expectedRunStatus": "completed",
+      "fileBytes": 13195
+    },
+    {
+      "file": "Rule-031.geojson",
+      "ruleId": "Rule-031",
+      "title": "Segments must meet the minimum length",
+      "applicable": true,
+      "expectedIssueCount": 12,
+      "attributeRules": ".config/geometry-only-attributes.json",
+      "topologyRules": [
+        "Rule-031"
+      ],
+      "topologyConfig": ".config/Rule-031.rules.json",
+      "topologyOptions": {
+        "rules": [
+          {
+            "id": "Rule-031",
+            "parameters": {
+              "minLength": 2,
+              "toleranceDigits": 8
+            }
+          }
+        ]
+      },
+      "note": "Counts describe the current file and selected configuration, measured with GEOS WASM 3.13.0.",
+      "observedIssueCounts": {
+        "Rule-031": 12
+      },
+      "expectedRunStatus": "completed",
+      "fileBytes": 13526
+    },
+    {
+      "file": "Rule-032.geojson",
+      "ruleId": "Rule-032",
+      "title": "Angles must meet the minimum angle",
+      "applicable": true,
+      "expectedIssueCount": 0,
+      "attributeRules": ".config/geometry-only-attributes.json",
+      "topologyRules": [
+        "Rule-032"
+      ],
+      "topologyConfig": ".config/Rule-032.rules.json",
+      "topologyOptions": {
+        "rules": [
+          {
+            "id": "Rule-032",
+            "parameters": {
+              "minAngle": 91,
+              "toleranceDigits": 8
+            }
+          }
+        ]
+      },
+      "note": "Counts describe the current file and selected configuration, measured with GEOS WASM 3.13.0. This file produces no finding for the named rule; it is a non-triggering control, not evidence of positive detection coverage.",
+      "observedIssueCounts": {},
+      "expectedRunStatus": "completed",
+      "fileBytes": 13532
+    },
+    {
+      "file": "Rule-033.geojson",
+      "ruleId": "Rule-033",
+      "title": "Polygons must meet the minimum area",
+      "applicable": true,
+      "expectedIssueCount": 6,
+      "attributeRules": ".config/geometry-only-attributes.json",
+      "topologyRules": [
+        "Rule-033"
+      ],
+      "topologyConfig": ".config/Rule-033.rules.json",
+      "topologyOptions": {
+        "rules": [
+          {
+            "id": "Rule-033",
+            "parameters": {
+              "minArea": 5
+            }
+          }
+        ]
+      },
+      "note": "Counts describe the current file and selected configuration, measured with GEOS WASM 3.13.0.",
+      "observedIssueCounts": {
+        "Rule-033": 6
+      },
+      "expectedRunStatus": "completed",
+      "fileBytes": 14540
+    },
+    {
+      "file": "Rule-034.geojson",
+      "ruleId": "Rule-034",
+      "title": "Polygons must not be slivers",
+      "applicable": true,
+      "expectedIssueCount": 0,
+      "attributeRules": ".config/geometry-only-attributes.json",
+      "topologyRules": [
+        "Rule-034"
+      ],
+      "topologyConfig": ".config/Rule-034.rules.json",
+      "topologyOptions": {
+        "rules": [
+          {
+            "id": "Rule-034",
+            "parameters": {
+              "maxThinness": 9,
+              "maxArea": 0
+            }
+          }
+        ]
+      },
+      "note": "Counts describe the current file and selected configuration, measured with GEOS WASM 3.13.0. This file produces no finding for the named rule; it is a non-triggering control, not evidence of positive detection coverage.",
+      "observedIssueCounts": {},
+      "expectedRunStatus": "completed",
+      "fileBytes": 14618
+    },
+    {
+      "file": "Rule-035.geojson",
+      "ruleId": "Rule-035",
+      "title": "Must not have duplicate features (Geometry Checker)",
+      "applicable": true,
+      "expectedIssueCount": 6,
+      "attributeRules": ".config/geometry-only-attributes.json",
+      "topologyRules": [
+        "Rule-035"
+      ],
+      "topologyConfig": ".config/Rule-035.rules.json",
+      "topologyOptions": {
+        "rules": [
+          {
+            "id": "Rule-035",
+            "parameters": {
+              "toleranceDigits": 8
+            }
+          }
+        ]
+      },
+      "note": "Counts describe the current file and selected configuration, measured with GEOS WASM 3.13.0.",
+      "observedIssueCounts": {
+        "Rule-035": 6
+      },
+      "expectedRunStatus": "completed",
+      "fileBytes": 12667
+    },
+    {
+      "file": "Rule-036.geojson",
+      "ruleId": "Rule-036",
+      "title": "Features must not be contained in other features",
+      "applicable": true,
+      "expectedIssueCount": 0,
+      "attributeRules": ".config/geometry-only-attributes.json",
+      "topologyRules": [
+        "Rule-036"
+      ],
+      "topologyConfig": ".config/Rule-036.rules.json",
+      "topologyOptions": {
+        "rules": [
+          {
+            "id": "Rule-036",
+            "parameters": {
+              "toleranceDigits": 8
+            }
+          }
+        ]
+      },
+      "note": "Counts describe the current file and selected configuration, measured with GEOS WASM 3.13.0. This file produces no finding for the named rule; it is a non-triggering control, not evidence of positive detection coverage.",
+      "observedIssueCounts": {},
+      "expectedRunStatus": "completed",
+      "fileBytes": 12692
+    },
+    {
+      "file": "Rule-037.geojson",
+      "ruleId": "Rule-037",
+      "title": "Polygon overlaps must not be smaller than the threshold",
+      "applicable": true,
+      "expectedIssueCount": 0,
+      "attributeRules": ".config/geometry-only-attributes.json",
+      "topologyRules": [
+        "Rule-037"
+      ],
+      "topologyConfig": ".config/Rule-037.rules.json",
+      "topologyOptions": {
+        "rules": [
+          {
+            "id": "Rule-037",
+            "parameters": {
+              "maxArea": 9,
+              "toleranceDigits": 8
+            }
+          }
+        ]
+      },
+      "note": "Counts describe the current file and selected configuration, measured with GEOS WASM 3.13.0. This file produces no finding for the named rule; it is a non-triggering control, not evidence of positive detection coverage.",
+      "observedIssueCounts": {},
+      "expectedRunStatus": "completed",
+      "fileBytes": 14535
+    },
+    {
+      "file": "Rule-038.geojson",
+      "ruleId": "Rule-038",
+      "title": "Polygon gaps must not be smaller than the threshold",
+      "applicable": true,
+      "expectedIssueCount": 0,
+      "attributeRules": ".config/geometry-only-attributes.json",
+      "topologyRules": [
+        "Rule-038"
+      ],
+      "topologyConfig": ".config/Rule-038.rules.json",
+      "topologyOptions": {
+        "rules": [
+          {
+            "id": "Rule-038",
+            "parameters": {
+              "toleranceDigits": 8,
+              "maxArea": 0
+            }
+          }
+        ]
+      },
+      "note": "Counts describe the current file and selected configuration, measured with GEOS WASM 3.13.0. This file produces no finding for the named rule; it is a non-triggering control, not evidence of positive detection coverage.",
+      "observedIssueCounts": {},
+      "expectedRunStatus": "completed",
+      "fileBytes": 14545
+    },
+    {
+      "file": "Rule-039.geojson",
+      "ruleId": "Rule-039",
+      "title": "Lines must not intersect other line parts",
+      "applicable": true,
+      "expectedIssueCount": 0,
+      "attributeRules": ".config/geometry-only-attributes.json",
+      "topologyRules": [
+        "Rule-039"
+      ],
+      "topologyConfig": ".config/Rule-039.rules.json",
+      "topologyOptions": {
+        "rules": [
+          {
+            "id": "Rule-039",
+            "parameters": {
+              "toleranceDigits": 8
+            }
+          }
+        ]
+      },
+      "note": "Counts describe the current file and selected configuration, measured with GEOS WASM 3.13.0. This file produces no finding for the named rule; it is a non-triggering control, not evidence of positive detection coverage.",
+      "observedIssueCounts": {},
+      "expectedRunStatus": "completed",
+      "fileBytes": 13844
+    },
+    {
+      "file": "Rule-040.geojson",
+      "ruleId": "Rule-040",
+      "title": "Geometry types must match the allowed types",
+      "applicable": true,
+      "expectedIssueCount": 6,
+      "attributeRules": ".config/geometry-only-attributes.json",
+      "topologyRules": [
+        "Rule-040"
+      ],
+      "topologyConfig": ".config/Rule-040.rules.json",
+      "topologyOptions": {
+        "rules": [
+          {
+            "id": "Rule-040",
+            "parameters": {
+              "allowedTypes": [
+                "Point"
+              ]
+            }
+          }
+        ]
+      },
+      "note": "Counts describe the current file and selected configuration, measured with GEOS WASM 3.13.0.",
+      "observedIssueCounts": {
+        "Rule-040": 6
+      },
+      "expectedRunStatus": "completed",
+      "fileBytes": 13190
+    },
+    {
+      "file": "sample.geojson",
+      "ruleId": null,
+      "applicable": true,
+      "expectedIssueCount": 2,
+      "attributeRules": ".config/geometry-only-attributes.json",
+      "topologyRules": [],
+      "note": "Counts describe the current file and selected configuration, measured with GEOS WASM 3.13.0.",
+      "observedIssueCounts": {
+        "Rule-011": 1,
+        "Rule-008": 1
+      },
+      "expectedRunStatus": "completed",
+      "fileBytes": 774
+    }
+  ]
+}

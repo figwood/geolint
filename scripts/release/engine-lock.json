@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "wrapper": {
+    "version": "3.1.1",
+    "commit": "82e49f9ba1849a004bf31fc1c1be2ff918889586",
+    "repository": "https://github.com/chrispahm/geos-wasm.git",
+    "tree": "c00c2bb9cf2eec6bd8c47d6caff0e75dcf8b0241"
+  },
+  "geos": {
+    "version": "3.13.0",
+    "sha256": "47ec83ff334d672b9e4426695f15da6e6368244214971fabf386ff8ef6df39e4",
+    "url": "https://download.osgeo.org/geos/geos-3.13.0.tar.bz2"
+  },
+  "emscripten": {
+    "version": "3.1.73",
+    "commit": "ac676d5e437525d15df5fd46bc2c208ec6d376a3",
+    "repository": "https://github.com/emscripten-core/emscripten.git",
+    "tree": "3f44b74492e7ff1b748ae15702328a3cb03fe1ab",
+    "gitlinks": {
+      "test/third_party/googletest": "4fb7039fda3f6588c7ca9664176f8c9e0a023b4a",
+      "test/third_party/posixtestsuite": "869e266b090a8d44e51bb040904c942556b1e4ab",
+      "test/third_party/wasi-test-suite": "ac9371207fc61972a21d7d086074ca690a99d14d"
+    },
+    "gitlinkRepositories": {
+      "test/third_party/googletest": "https://github.com/google/googletest",
+      "test/third_party/posixtestsuite": "https://github.com/emscripten-core/posixtestsuite",
+      "test/third_party/wasi-test-suite": "https://github.com/khronosproject/wasi-test-suite"
+    }
+  },
+  "emsdk": {
+    "commit": "6abe5123c34a7751a2d5b679e856b2591ba04145",
+    "repository": "https://github.com/emscripten-core/emsdk.git",
+    "tree": "e41bcd780b05956b82a4eb843f0912658aa90554"
+  }
+}

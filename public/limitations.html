@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Known limitations — GeoLint</title>
+<meta name="description" content="Current known limitations are listed on the About page.">
+<link rel="icon" type="image/png" sizes="32x32" href="./favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
+<link rel="stylesheet" href="./styles.css">
+<meta name="robots" content="noindex"><meta http-equiv="refresh" content="0; url=./about.html#limits">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header><a class="brand" href="./"><img src="./site-icon-512.png" alt="" width="44" height="44"><span class="brand-copy"><span>GeoLint</span><span class="environment-badge" hidden>Preview</span><span>Geometry Inspector</span></span></a><nav aria-label="Main navigation"><a href="./help.html">Help</a><a href="./rules.html">Rules</a><a href="./about.html">About</a></nav></header>
+<main id="main"><article><h1>Known limitations</h1><p>Read <a href="./about.html#limits">Known limitations</a> on the About page.</p><section id="qgis-checks" class="panel"><h2>Single-layer rule boundaries</h2><p>New checks require planar 2D supported geometries. GeometryCollections are not expanded. Cross-layer checks, automatic fixes, reprojection and arbitrary QGIS Processing algorithms are outside this build. Thresholds use original coordinate units, not implicit metres.</p><p>Different plugin variants are separate rules: Rule-014 counts exactly shared endpoints, while Rule-030 follows Geometry Checker line-connection semantics. Rule-013 forbids multiple parts, while Rule-029 requires a Multi geometry to contain more than one part. Rule-035 groups preceding duplicate members rather than reporting every unordered pair.</p><p>Checks retain fixed resource and time budgets. Excluded, failed, cancelled or incomplete work is never presented as completed coverage. Historical algorithm comparison used QGIS 3.40.3 with GEOS 3.13.0; QGIS 3.44 GUI plugin parity remains a separate acceptance step.</p></section></article></main>
+</body></html>

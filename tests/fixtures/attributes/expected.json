@@ -1,0 +1,14 @@
+[
+  { "featureIndex": 0, "status": "invalid", "issues": [
+    { "ruleId": "Rule-018", "configuredRuleId": "pid-required", "field": "PID", "constraint": "required" },
+    { "ruleId": "Rule-019", "configuredRuleId": "geo-type", "field": "geo_type", "constraint": "type" },
+    { "ruleId": "Rule-020", "configuredRuleId": "geo-area", "field": "geo_area", "constraint": "exclusiveMinimum" }
+  ] },
+  { "featureIndex": 1, "status": "valid", "issues": [] },
+  { "featureIndex": 2, "status": "invalid", "issues": [
+    { "ruleId": "Rule-018", "configuredRuleId": "pid-required", "field": "PID", "constraint": "allowNull" },
+    { "ruleId": "Rule-019", "configuredRuleId": "geo-type", "field": "geo_type", "constraint": "type" },
+    { "ruleId": "Rule-020", "configuredRuleId": "geo-area", "field": "geo_area", "constraint": "exclusiveMinimum" }
+  ] },
+  { "featureIndex": 3, "status": "failed", "issues": [] }
+]

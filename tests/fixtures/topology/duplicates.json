@@ -1,0 +1,1143 @@
+{
+  "geosVersion": "3.13.0",
+  "cases": [
+    {
+      "name": "three duplicate points",
+      "geometries": [
+        {
+          "type": "Point",
+          "coordinates": [
+            0,
+            0
+          ]
+        },
+        {
+          "type": "Point",
+          "coordinates": [
+            0,
+            0
+          ]
+        },
+        {
+          "type": "Point",
+          "coordinates": [
+            0,
+            0
+          ]
+        }
+      ],
+      "expected": {
+        "participants": 3,
+        "coverage": "complete",
+        "comparisons": 3,
+        "pairs": [
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            1,
+            2
+          ]
+        ],
+        "groups": [
+          [
+            0,
+            1,
+            2
+          ]
+        ]
+      }
+    },
+    {
+      "name": "nearby distinct points",
+      "geometries": [
+        {
+          "type": "Point",
+          "coordinates": [
+            0,
+            0
+          ]
+        },
+        {
+          "type": "Point",
+          "coordinates": [
+            1e-09,
+            0
+          ]
+        }
+      ],
+      "expected": {
+        "participants": 2,
+        "coverage": "complete",
+        "comparisons": 0,
+        "pairs": [],
+        "groups": []
+      }
+    },
+    {
+      "name": "reversed and densified lines",
+      "geometries": [
+        {
+          "type": "LineString",
+          "coordinates": [
+            [
+              0,
+              0
+            ],
+            [
+              2,
+              0
+            ]
+          ]
+        },
+        {
+          "type": "LineString",
+          "coordinates": [
+            [
+              2,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ]
+        },
+        {
+          "type": "LineString",
+          "coordinates": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              0
+            ],
+            [
+              2,
+              0
+            ]
+          ]
+        }
+      ],
+      "expected": {
+        "participants": 3,
+        "coverage": "complete",
+        "comparisons": 3,
+        "pairs": [
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            1,
+            2
+          ]
+        ],
+        "groups": [
+          [
+            0,
+            1,
+            2
+          ]
+        ]
+      }
+    },
+    {
+      "name": "crossing lines",
+      "geometries": [
+        {
+          "type": "LineString",
+          "coordinates": [
+            [
+              0,
+              0
+            ],
+            [
+              2,
+              2
+            ]
+          ]
+        },
+        {
+          "type": "LineString",
+          "coordinates": [
+            [
+              0,
+              2
+            ],
+            [
+              2,
+              0
+            ]
+          ]
+        }
+      ],
+      "expected": {
+        "participants": 2,
+        "coverage": "complete",
+        "comparisons": 1,
+        "pairs": [],
+        "groups": []
+      }
+    },
+    {
+      "name": "reordered multipoints",
+      "geometries": [
+        {
+          "type": "MultiPoint",
+          "coordinates": [
+            [
+              0,
+              0
+            ],
+            [
+              2,
+              2
+            ]
+          ]
+        },
+        {
+          "type": "MultiPoint",
+          "coordinates": [
+            [
+              2,
+              2
+            ],
+            [
+              0,
+              0
+            ]
+          ]
+        }
+      ],
+      "expected": {
+        "participants": 2,
+        "coverage": "complete",
+        "comparisons": 1,
+        "pairs": [
+          [
+            0,
+            1
+          ]
+        ],
+        "groups": [
+          [
+            0,
+            1
+          ]
+        ]
+      }
+    },
+    {
+      "name": "point and singleton multipoint",
+      "geometries": [
+        {
+          "type": "Point",
+          "coordinates": [
+            0,
+            0
+          ]
+        },
+        {
+          "type": "MultiPoint",
+          "coordinates": [
+            [
+              0,
+              0
+            ]
+          ]
+        }
+      ],
+      "expected": {
+        "participants": 2,
+        "coverage": "complete",
+        "comparisons": 1,
+        "pairs": [
+          [
+            0,
+            1
+          ]
+        ],
+        "groups": [
+          [
+            0,
+            1
+          ]
+        ]
+      }
+    },
+    {
+      "name": "line and multipart representation",
+      "geometries": [
+        {
+          "type": "LineString",
+          "coordinates": [
+            [
+              0,
+              0
+            ],
+            [
+              2,
+              0
+            ]
+          ]
+        },
+        {
+          "type": "MultiLineString",
+          "coordinates": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                1,
+                0
+              ]
+            ],
+            [
+              [
+                1,
+                0
+              ],
+              [
+                2,
+                0
+              ]
+            ]
+          ]
+        }
+      ],
+      "expected": {
+        "participants": 2,
+        "coverage": "complete",
+        "comparisons": 1,
+        "pairs": [
+          [
+            0,
+            1
+          ]
+        ],
+        "groups": [
+          [
+            0,
+            1
+          ]
+        ]
+      }
+    },
+    {
+      "name": "polygon ring direction and start",
+      "geometries": [
+        {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                4,
+                0
+              ],
+              [
+                4,
+                4
+              ],
+              [
+                0,
+                4
+              ],
+              [
+                0,
+                0
+              ]
+            ]
+          ]
+        },
+        {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                4
+              ],
+              [
+                4,
+                4
+              ],
+              [
+                4,
+                0
+              ],
+              [
+                0,
+                0
+              ]
+            ]
+          ]
+        },
+        {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                4,
+                0
+              ],
+              [
+                4,
+                4
+              ],
+              [
+                0,
+                4
+              ],
+              [
+                0,
+                0
+              ],
+              [
+                4,
+                0
+              ]
+            ]
+          ]
+        }
+      ],
+      "expected": {
+        "participants": 3,
+        "coverage": "complete",
+        "comparisons": 3,
+        "pairs": [
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            1,
+            2
+          ]
+        ],
+        "groups": [
+          [
+            0,
+            1,
+            2
+          ]
+        ]
+      }
+    },
+    {
+      "name": "polygon and singleton multipolygon",
+      "geometries": [
+        {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                4,
+                0
+              ],
+              [
+                4,
+                4
+              ],
+              [
+                0,
+                4
+              ],
+              [
+                0,
+                0
+              ]
+            ]
+          ]
+        },
+        {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  0,
+                  0
+                ],
+                [
+                  4,
+                  0
+                ],
+                [
+                  4,
+                  4
+                ],
+                [
+                  0,
+                  4
+                ],
+                [
+                  0,
+                  0
+                ]
+              ]
+            ]
+          ]
+        }
+      ],
+      "expected": {
+        "participants": 2,
+        "coverage": "complete",
+        "comparisons": 1,
+        "pairs": [
+          [
+            0,
+            1
+          ]
+        ],
+        "groups": [
+          [
+            0,
+            1
+          ]
+        ]
+      }
+    },
+    {
+      "name": "polygon hole differs",
+      "geometries": [
+        {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                4,
+                0
+              ],
+              [
+                4,
+                4
+              ],
+              [
+                0,
+                4
+              ],
+              [
+                0,
+                0
+              ]
+            ]
+          ]
+        },
+        {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                4,
+                0
+              ],
+              [
+                4,
+                4
+              ],
+              [
+                0,
+                4
+              ],
+              [
+                0,
+                0
+              ]
+            ],
+            [
+              [
+                1,
+                1
+              ],
+              [
+                1,
+                2
+              ],
+              [
+                2,
+                2
+              ],
+              [
+                2,
+                1
+              ],
+              [
+                1,
+                1
+              ]
+            ]
+          ]
+        }
+      ],
+      "expected": {
+        "participants": 2,
+        "coverage": "complete",
+        "comparisons": 1,
+        "pairs": [],
+        "groups": []
+      }
+    },
+    {
+      "name": "multipart polygon order",
+      "geometries": [
+        {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  0,
+                  0
+                ],
+                [
+                  4,
+                  0
+                ],
+                [
+                  4,
+                  4
+                ],
+                [
+                  0,
+                  4
+                ],
+                [
+                  0,
+                  0
+                ]
+              ]
+            ],
+            [
+              [
+                [
+                  6,
+                  0
+                ],
+                [
+                  8,
+                  0
+                ],
+                [
+                  8,
+                  2
+                ],
+                [
+                  6,
+                  0
+                ]
+              ]
+            ]
+          ]
+        },
+        {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  6,
+                  0
+                ],
+                [
+                  8,
+                  0
+                ],
+                [
+                  8,
+                  2
+                ],
+                [
+                  6,
+                  0
+                ]
+              ]
+            ],
+            [
+              [
+                [
+                  0,
+                  0
+                ],
+                [
+                  4,
+                  0
+                ],
+                [
+                  4,
+                  4
+                ],
+                [
+                  0,
+                  4
+                ],
+                [
+                  0,
+                  0
+                ]
+              ]
+            ]
+          ]
+        }
+      ],
+      "expected": {
+        "participants": 2,
+        "coverage": "complete",
+        "comparisons": 1,
+        "pairs": [
+          [
+            0,
+            1
+          ]
+        ],
+        "groups": [
+          [
+            0,
+            1
+          ]
+        ]
+      }
+    },
+    {
+      "name": "different geometry families",
+      "geometries": [
+        {
+          "type": "Point",
+          "coordinates": [
+            0,
+            0
+          ]
+        },
+        {
+          "type": "LineString",
+          "coordinates": [
+            [
+              0,
+              0
+            ],
+            [
+              2,
+              0
+            ]
+          ]
+        },
+        {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                4,
+                0
+              ],
+              [
+                4,
+                4
+              ],
+              [
+                0,
+                4
+              ],
+              [
+                0,
+                0
+              ]
+            ]
+          ]
+        }
+      ],
+      "expected": {
+        "participants": 3,
+        "coverage": "complete",
+        "comparisons": 3,
+        "pairs": [],
+        "groups": []
+      }
+    },
+    {
+      "name": "partial coverage",
+      "geometries": [
+        {
+          "type": "Point",
+          "coordinates": [
+            0,
+            0
+          ]
+        },
+        {
+          "type": "Point",
+          "coordinates": [
+            0,
+            0
+          ]
+        },
+        {
+          "type": "Point",
+          "coordinates": []
+        },
+        {
+          "type": "Point",
+          "coordinates": [
+            0,
+            0,
+            5
+          ]
+        },
+        null,
+        {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                4,
+                4
+              ],
+              [
+                0,
+                4
+              ],
+              [
+                4,
+                0
+              ],
+              [
+                0,
+                0
+              ]
+            ]
+          ]
+        },
+        {
+          "type": "GeometryCollection",
+          "geometries": [
+            {
+              "type": "Point",
+              "coordinates": [
+                0,
+                0
+              ]
+            }
+          ]
+        }
+      ],
+      "expected": {
+        "participants": 2,
+        "coverage": "partial",
+        "comparisons": 1,
+        "pairs": [
+          [
+            0,
+            1
+          ]
+        ],
+        "groups": [
+          [
+            0,
+            1
+          ]
+        ]
+      }
+    },
+    {
+      "name": "invalid polygons excluded",
+      "geometries": [
+        {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                4,
+                4
+              ],
+              [
+                0,
+                4
+              ],
+              [
+                4,
+                0
+              ],
+              [
+                0,
+                0
+              ]
+            ]
+          ]
+        },
+        {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                4,
+                4
+              ],
+              [
+                0,
+                4
+              ],
+              [
+                4,
+                0
+              ],
+              [
+                0,
+                0
+              ]
+            ]
+          ]
+        }
+      ],
+      "expected": {
+        "participants": 0,
+        "coverage": "none",
+        "comparisons": 0,
+        "pairs": [],
+        "groups": []
+      }
+    },
+    {
+      "name": "collection excluded",
+      "geometries": [
+        {
+          "type": "GeometryCollection",
+          "geometries": [
+            {
+              "type": "Point",
+              "coordinates": [
+                0,
+                0
+              ]
+            }
+          ]
+        }
+      ],
+      "expected": {
+        "participants": 0,
+        "coverage": "none",
+        "comparisons": 0,
+        "pairs": [],
+        "groups": []
+      }
+    },
+    {
+      "name": "empty dataset",
+      "geometries": [],
+      "expected": {
+        "participants": 0,
+        "coverage": "none",
+        "comparisons": 0,
+        "pairs": [],
+        "groups": []
+      }
+    },
+    {
+      "name": "partial polygon overlap",
+      "geometries": [
+        {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                0,
+                0
+              ],
+              [
+                4,
+                0
+              ],
+              [
+                4,
+                4
+              ],
+              [
+                0,
+                4
+              ],
+              [
+                0,
+                0
+              ]
+            ]
+          ]
+        },
+        {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                2,
+                0
+              ],
+              [
+                6,
+                0
+              ],
+              [
+                6,
+                4
+              ],
+              [
+                2,
+                4
+              ],
+              [
+                2,
+                0
+              ]
+            ]
+          ]
+        }
+      ],
+      "expected": {
+        "participants": 2,
+        "coverage": "complete",
+        "comparisons": 1,
+        "pairs": [],
+        "groups": []
+      }
+    },
+    {
+      "name": "point not whole multipoint",
+      "geometries": [
+        {
+          "type": "Point",
+          "coordinates": [
+            0,
+            0
+          ]
+        },
+        {
+          "type": "MultiPoint",
+          "coordinates": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              0
+            ]
+          ]
+        }
+      ],
+      "expected": {
+        "participants": 2,
+        "coverage": "complete",
+        "comparisons": 1,
+        "pairs": [],
+        "groups": []
+      }
+    },
+    {
+      "name": "two independent duplicate groups",
+      "geometries": [
+        {
+          "type": "Point",
+          "coordinates": [
+            0,
+            0
+          ]
+        },
+        {
+          "type": "Point",
+          "coordinates": [
+            0,
+            0
+          ]
+        },
+        {
+          "type": "Point",
+          "coordinates": [
+            4,
+            4
+          ]
+        },
+        {
+          "type": "Point",
+          "coordinates": [
+            4,
+            4
+          ]
+        }
+      ],
+      "expected": {
+        "participants": 4,
+        "coverage": "complete",
+        "comparisons": 2,
+        "pairs": [
+          [
+            0,
+            1
+          ],
+          [
+            2,
+            3
+          ]
+        ],
+        "groups": [
+          [
+            0,
+            1
+          ],
+          [
+            2,
+            3
+          ]
+        ]
+      }
+    }
+  ]
+}

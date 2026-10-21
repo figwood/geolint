@@ -1,0 +1,19 @@
+{
+  "kind": "geolint-attribute-rules",
+  "schemaVersion": "1.0",
+  "rules": [
+    {
+      "id": "value-rule",
+      "field": "value",
+      "enabled": true,
+      "required": true,
+      "allowNull": false,
+      "allowEmpty": false,
+      "type": "int",
+      "constraints": {
+        "minimum": 0,
+        "maximum": 10
+      }
+    }
+  ]
+}

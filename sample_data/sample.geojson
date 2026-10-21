@@ -1,0 +1,29 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "id": "valid-square",
+      "properties": { "name": "Valid square", "expectedStatus": "valid" },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[0, 0], [4, 0], [4, 4], [0, 4], [0, 0]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "invalid-bowtie-café",
+      "properties": { "name": "Self-intersecting polygon", "expectedStatus": "invalid" },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[10, 0], [14, 4], [10, 4], [14, 0], [10, 0]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "null-geometry",
+      "properties": { "name": "Null geometry", "expectedStatus": "skipped" },
+      "geometry": null
+    }
+  ]
+}

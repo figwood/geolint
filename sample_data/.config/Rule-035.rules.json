@@ -1,0 +1,10 @@
+{
+  "rules": [
+    {
+      "id": "Rule-035",
+      "parameters": {
+        "toleranceDigits": 8
+      }
+    }
+  ]
+}
